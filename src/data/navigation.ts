@@ -2,28 +2,37 @@ export const navigation = [
   {
     title: "Home",
     href: "/",
+    mega: false,
+  },
+
+  {
+    title: "About Us",
+    href: "/about",
+    mega: false,
   },
 
   {
     title: "Domains",
     href: "/domains",
+    mega: false,
   },
 
   {
     title: "Hosting",
     href: "/hosting",
     mega: true,
+
     columns: [
       {
         heading: "Web Hosting",
         items: [
           {
             title: "Limited Shared Hosting",
-            href: "/hosting/limited-shared-hosting",
+            href: "/hosting/limited",
           },
           {
             title: "Unlimited Shared Hosting",
-            href: "/hosting/unlimited-shared-hosting",
+            href: "/hosting/unlimited",
           },
         ],
       },
@@ -31,12 +40,13 @@ export const navigation = [
   },
 
   {
-    title: "Email",
+    title: "Email Hosting",
     href: "/email-hosting",
     mega: true,
+
     columns: [
       {
-        heading: "Email Hosting",
+        heading: "Business Email",
         items: [
           {
             title: "Business Email Hosting",
@@ -52,12 +62,13 @@ export const navigation = [
   },
 
   {
-    title: "Development",
-     href: "/development",
+    title: "Website Development",
+    href: "/development",
     mega: true,
+
     columns: [
       {
-        heading: "Website Development",
+        heading: "Web Development",
         items: [
           {
             title: "Web Development",
@@ -88,9 +99,10 @@ export const navigation = [
     title: "Design",
     href: "/design",
     mega: true,
+
     columns: [
       {
-        heading: "What We Design",
+        heading: "Creative Design",
         items: [
           {
             title: "Logo Design",
@@ -110,12 +122,13 @@ export const navigation = [
   },
 
   {
-    title: "Marketing",
+    title: "Digital Marketing",
     href: "/digital-marketing",
     mega: true,
+
     columns: [
       {
-        heading: "SEO",
+        heading: "SEO & Marketing",
         items: [
           {
             title: "Digital Marketing Service",
@@ -123,7 +136,7 @@ export const navigation = [
           },
           {
             title: "SEO & SMO",
-            href: "/digital-marketing/seo-smo",
+            href: "/digital-marketing/seo",
           },
           {
             title: "On Page SEO",
@@ -145,7 +158,7 @@ export const navigation = [
       },
 
       {
-        heading: "Social Media & Advertising",
+        heading: "Social & Advertising",
         items: [
           {
             title: "Email Marketing",
@@ -153,15 +166,15 @@ export const navigation = [
           },
           {
             title: "Facebook Marketing",
-            href: "/digital-marketing/facebook",
+            href: "/digital-marketing/facebook-marketing",
           },
           {
             title: "Instagram Marketing",
-            href: "/digital-marketing/instagram",
+            href: "/digital-marketing/instagram-marketing",
           },
           {
             title: "Twitter Marketing",
-            href: "/digital-marketing/twitter",
+            href: "/digital-marketing/twitter-marketing",
           },
           {
             title: "Google Ads",
@@ -170,5 +183,11 @@ export const navigation = [
         ],
       },
     ],
+  },
+
+  {
+    title: "Contact",
+    href: "/contact",
+    mega: false,
   },
 ];

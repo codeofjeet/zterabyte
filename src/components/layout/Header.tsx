@@ -9,8 +9,11 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm">
 
-      {/* Top Bar */}
+      {/* =====================================================
+          TOP BAR
+      ====================================================== */}
       <div className="hidden bg-[#071827] text-white lg:block">
+
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 text-sm">
 
           <div className="flex items-center gap-6">
@@ -20,7 +23,10 @@ export default function Header() {
               className="flex items-center gap-2 transition hover:text-[#6fc2f5]"
             >
               <FiPhone />
-              +91 12345 67890
+
+              <span>
+                +91 12345 67890
+              </span>
             </a>
 
             <a
@@ -28,22 +34,31 @@ export default function Header() {
               className="flex items-center gap-2 transition hover:text-[#6fc2f5]"
             >
               <FiMail />
-              info@zterabyte.com
+
+              <span>
+                info@zterabyte.com
+              </span>
             </a>
 
           </div>
 
-          <p>
+          <p className="whitespace-nowrap">
             Trusted Digital & Hosting Solutions
           </p>
 
         </div>
+
       </div>
 
-      {/* Main Header */}
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 lg:px-6">
 
-        {/* Logo */}
+      {/* =====================================================
+          MAIN HEADER
+      ====================================================== */}
+      <div className="mx-auto flex max-w-350 items-center gap-3 px-5 py-4 lg:px-6">
+
+        {/* =================================================
+            LOGO
+        ================================================== */}
         <Link
           href="/"
           className="shrink-0"
@@ -54,34 +69,46 @@ export default function Header() {
             width={180}
             height={45}
             priority
-            className="h-auto w-[150px] sm:w-[175px]"
+            className="h-auto w-36.25 xl:w-41.25"
           />
         </Link>
 
-        {/* Desktop Navigation */}
+
+        {/* =================================================
+            DESKTOP NAVIGATION
+        ================================================== */}
         <DesktopMenu />
 
-        {/* Desktop Actions */}
-        <div className="hidden items-center gap-3 lg:flex">
+
+        {/* =================================================
+            DESKTOP ACTIONS
+        ================================================== */}
+        <div className="hidden shrink-0 items-center gap-2 lg:flex">
 
           <Link
             href="/login"
-            className="flex items-center gap-2 rounded-lg border border-[#006cb5] px-4 py-2.5 text-sm font-semibold text-[#006cb5] transition hover:bg-[#eaf6ff]"
+            className="flex items-center gap-2 whitespace-nowrap rounded-lg border border-[#006cb5] px-3.5 py-2.5 text-sm font-semibold text-[#006cb5] transition hover:bg-[#eaf6ff]"
           >
             <FiUser />
-            Client Login
+
+            <span>
+              Client Login
+            </span>
           </Link>
 
           <Link
             href="/contact"
-            className="rounded-lg bg-[#006cb5] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#004f86]"
+            className="whitespace-nowrap rounded-lg bg-[#006cb5] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#004f86]"
           >
             Get Started
           </Link>
 
         </div>
 
-        {/* Mobile Menu */}
+
+        {/* =================================================
+            MOBILE MENU
+        ================================================== */}
         <MobileMenu />
 
       </div>
