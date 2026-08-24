@@ -15,35 +15,35 @@ const developmentServices = [
     title: "Web Development",
     description:
       "Modern, responsive websites and web applications designed around your business requirements.",
-    href: "/development/web-development",
+    href: "/website-development/web-development",
   },
   {
     icon: FiShoppingCart,
     title: "eCommerce Development",
     description:
       "Build powerful online stores that provide a smooth shopping experience across all devices.",
-    href: "/development/ecommerce",
+    href: "/website-development/ecommerce",
   },
   {
     icon: FiLayers,
     title: "Shopify Development",
     description:
       "Launch and customize Shopify stores with a professional design and business-focused features.",
-    href: "/development/shopify",
+    href: "/website-development/shopify",
   },
   {
     icon: FiCode,
     title: "WordPress Development",
     description:
       "Flexible WordPress websites for businesses, organizations, blogs and online services.",
-    href: "/development/wordpress",
+    href: "/website-development/wordpress",
   },
   {
     icon: FiSmartphone,
     title: "Mobile Application Development",
     description:
       "Create user-friendly mobile applications that connect your customers with your business.",
-    href: "/development/mobile-app",
+    href: "/website-development/mobile-app",
   },
 ];
 

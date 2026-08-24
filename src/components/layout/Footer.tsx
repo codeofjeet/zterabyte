@@ -27,7 +27,7 @@ const services = [
   },
   {
     title: "Website Development",
-    href: "/development",
+    href: "/website-development",
   },
   {
     title: "Design Services",
@@ -42,23 +42,23 @@ const services = [
 const developmentLinks = [
   {
     title: "Web Development",
-    href: "/development/web-development",
+    href: "/website-development/web-development",
   },
   {
     title: "eCommerce Development",
-    href: "/development/ecommerce",
+    href: "/website-development/ecommerce",
   },
   {
     title: "Shopify Development",
-    href: "/development/shopify",
+    href: "/website-development/shopify",
   },
   {
     title: "WordPress Development",
-    href: "/development/wordpress",
+    href: "/website-development/wordpress",
   },
   {
     title: "Mobile App Development",
-    href: "/development/mobile-app",
+    href: "/website-development/mobile-app",
   },
 ];
 

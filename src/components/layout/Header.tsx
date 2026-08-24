@@ -9,35 +9,28 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm">
 
-      {/* =====================================================
+      {/* =========================
           TOP BAR
-      ====================================================== */}
+      ========================== */}
       <div className="hidden bg-[#071827] text-white lg:block">
+        <div className="mx-auto flex w-full max-w-360 items-center gap-3 px-5 py-3 lg:px-6 text-sm">
 
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 text-sm">
-
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-5">
 
             <a
               href="tel:+911234567890"
-              className="flex items-center gap-2 transition hover:text-[#6fc2f5]"
+              className="flex items-center gap-2 whitespace-nowrap transition hover:text-[#6fc2f5]"
             >
               <FiPhone />
-
-              <span>
-                +91 12345 67890
-              </span>
+              +91 12345 67890
             </a>
 
             <a
               href="mailto:info@zterabyte.com"
-              className="flex items-center gap-2 transition hover:text-[#6fc2f5]"
+              className="flex items-center gap-2 whitespace-nowrap transition hover:text-[#6fc2f5]"
             >
               <FiMail />
-
-              <span>
-                info@zterabyte.com
-              </span>
+              info@zterabyte.com
             </a>
 
           </div>
@@ -47,18 +40,15 @@ export default function Header() {
           </p>
 
         </div>
-
       </div>
 
 
-      {/* =====================================================
+      {/* =========================
           MAIN HEADER
-      ====================================================== */}
-      <div className="mx-auto flex max-w-350 items-center gap-3 px-5 py-4 lg:px-6">
+      ========================== */}
+      <div className="mx-auto flex w-full max-w-360 items-center gap-4 px-5 py-3 lg:px-6">
 
-        {/* =================================================
-            LOGO
-        ================================================== */}
+        {/* Logo */}
         <Link
           href="/"
           className="shrink-0"
@@ -69,36 +59,31 @@ export default function Header() {
             width={180}
             height={45}
             priority
-            className="h-auto w-36.25 xl:w-41.25"
+            className="h-auto w-35 xl:w-37.5"
           />
         </Link>
 
 
-        {/* =================================================
-            DESKTOP NAVIGATION
-        ================================================== */}
-        <DesktopMenu />
+        {/* Desktop Navigation */}
+        <div className="min-w-0 flex-1">
+          <DesktopMenu />
+        </div>
 
 
-        {/* =================================================
-            DESKTOP ACTIONS
-        ================================================== */}
+        {/* Desktop Actions */}
         <div className="hidden shrink-0 items-center gap-2 lg:flex">
 
           <Link
             href="/login"
-            className="flex items-center gap-2 whitespace-nowrap rounded-lg border border-[#006cb5] px-3.5 py-2.5 text-sm font-semibold text-[#006cb5] transition hover:bg-[#eaf6ff]"
+            className="flex items-center gap-1.5 whitespace-nowrap rounded-lg border border-[#006cb5] px-3 py-2 text-[13px] font-semibold text-[#006cb5] transition hover:bg-[#eaf6ff]"
           >
             <FiUser />
-
-            <span>
-              Client Login
-            </span>
+            Client Login
           </Link>
 
           <Link
             href="/contact"
-            className="whitespace-nowrap rounded-lg bg-[#006cb5] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#004f86]"
+            className="whitespace-nowrap rounded-lg bg-[#006cb5] px-3.5 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:bg-[#004f86]"
           >
             Get Started
           </Link>
@@ -106,9 +91,7 @@ export default function Header() {
         </div>
 
 
-        {/* =================================================
-            MOBILE MENU
-        ================================================== */}
+        {/* Mobile Menu */}
         <MobileMenu />
 
       </div>

@@ -72,23 +72,23 @@ export const navigation = [
         items: [
           {
             title: "Web Development",
-            href: "/development/web-development",
+            href: "/website-development/web-development",
           },
           {
             title: "eCommerce Website Development",
-            href: "/development/ecommerce",
+            href: "/website-development/ecommerce",
           },
           {
             title: "Shopify Website Development",
-            href: "/development/shopify",
+            href: "/website-development/shopify",
           },
           {
             title: "WordPress Website Development",
-            href: "/development/wordpress",
+            href: "/website-development/wordpress",
           },
           {
             title: "Mobile Application Development",
-            href: "/development/mobile-app",
+            href: "/website-development/mobile-app",
           },
         ],
       },
