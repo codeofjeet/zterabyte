@@ -1,116 +1,285 @@
+import MobileAppWhyChoose from "@/components/website/MobileAppWhyChoose";
+import MobileAppFeatures from "@/components/website/MobileAppFeatures";
+import MobileAppPlatforms from "@/components/website/MobileAppPlatforms";
+import MobileAppOptimization from "@/components/website/MobileAppOptimization";
+import MobileAppSecurity from "@/components/website/MobileAppSecurity";
+import MobileAppProcess from "@/components/website/MobileAppProcess";
+import MobileAppCTA from "@/components/website/MobileAppCTA";
+
 import Link from "next/link";
 import {
   FiArrowRight,
   FiCheckCircle,
   FiCode,
+  FiLayers,
   FiSmartphone,
+  FiZap,
 } from "react-icons/fi";
 
-const features = [
-  "Android application development",
-  "iOS application development",
-  "Cross-platform development",
-  "User-friendly interfaces",
-  "API and backend integration",
-  "Scalable mobile solutions",
+const highlights = [
+  "Android & iOS application development",
+  "Modern and user-friendly mobile UI",
+  "Business-focused app functionality",
+  "Responsive and performance-oriented apps",
 ];
 
-export default function MobileApplicationPage() {
+export default function MobileAppPage() {
   return (
-    <main className="bg-white">
+    <main className="w-full overflow-x-hidden bg-white">
 
-      {/* Hero */}
+      {/* =========================
+          HERO
+      ========================== */}
       <section className="relative overflow-hidden bg-[#071827] py-20 sm:py-24 lg:py-28">
 
-        <div className="absolute -left-32 top-0 h-96 w-96 rounded-full bg-[#006cb5]/20 blur-3xl" />
+        {/* Background Effects */}
+        <div className="absolute -left-40 -top-20 h-96 w-96 rounded-full bg-[#006cb5]/20 blur-3xl" />
 
-        <div className="absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-[#006cb5]/20 blur-3xl" />
+        <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-[#38a9f5]/15 blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-5 lg:px-6">
 
-          <div className="mx-auto max-w-4xl text-center">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
 
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#006cb5] text-white shadow-lg">
-              <FiSmartphone className="text-3xl" />
-            </div>
+            {/* =========================
+                LEFT CONTENT
+            ========================== */}
+            <div>
 
-            <span className="mt-6 inline-flex rounded-full border border-[#38a9f5]/30 bg-[#006cb5]/10 px-4 py-2 text-sm font-semibold text-[#70c8fa]">
-              Mobile Application Development
-            </span>
-
-            <h1 className="mt-6 text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
-              Mobile Apps That
-              <span className="block text-[#38a9f5]">
-                Connect Your Business
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#38a9f5]/20 bg-[#006cb5]/10 px-4 py-2 text-sm font-semibold text-[#70c8fa]">
+                <FiSmartphone />
+                Mobile Application Development
               </span>
-            </h1>
 
-            <p className="mx-auto mt-6 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg">
-              Build powerful and user-friendly mobile applications that
-              help your business connect with customers wherever they are.
-            </p>
+              <h1 className="mt-6 text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Build Powerful
+                <span className="block text-[#38a9f5]">
+                  Mobile Applications
+                </span>
+              </h1>
 
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+                Create modern mobile applications that help your business
+                connect with customers, simplify processes and deliver
+                useful digital experiences.
+              </p>
 
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#006cb5] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#0086dc]"
-              >
-                Start Your App Project
-                <FiArrowRight />
-              </Link>
+              {/* Highlights */}
+              <div className="mt-7 grid gap-3 sm:grid-cols-2">
 
-              <Link
-                href="/website-development"
-                className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10"
-              >
-                View Development Services
-              </Link>
+                {highlights.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-start gap-2 text-sm text-slate-300"
+                  >
+                    <FiCheckCircle className="mt-0.5 shrink-0 text-[#38a9f5]" />
+                    {item}
+                  </div>
+                ))}
+
+              </div>
+
+              {/* Buttons */}
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#006cb5] px-6 py-3.5 text-sm font-bold text-white shadow-lg transition hover:bg-[#0086dc]"
+                >
+                  Start Your App Project
+                  <FiArrowRight />
+                </Link>
+
+                <Link
+                  href="/website-development"
+                  className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10"
+                >
+                  View Development Services
+                </Link>
+
+              </div>
 
             </div>
 
-          </div>
+            {/* =========================
+                RIGHT MOBILE VISUAL
+            ========================== */}
+            <div className="flex justify-center lg:justify-end">
 
-        </div>
+              <div className="relative">
 
-      </section>
+                {/* Glow */}
+                <div className="absolute inset-0 rounded-full bg-[#006cb5]/20 blur-3xl" />
 
-      {/* Features */}
-      <section className="bg-[#f6fafd] py-16 sm:py-20 lg:py-24">
+                {/* Phone */}
+                <div className="relative w-[270px] rounded-[2.8rem] border-[8px] border-[#020b14] bg-[#020b14] p-2 shadow-2xl sm:w-[300px]">
 
-        <div className="mx-auto max-w-7xl px-5 lg:px-6">
+                  <div className="overflow-hidden rounded-[2.2rem] bg-white">
 
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+                    {/* Phone Header */}
+                    <div className="bg-[#006cb5] px-5 pb-6 pt-7">
 
-            {/* Left Visual */}
-            <div className="order-2 lg:order-1">
+                      <div className="flex items-center justify-between">
 
-              <div className="mx-auto max-w-sm rounded-[2.5rem] border-8 border-[#071827] bg-[#071827] p-3 shadow-2xl">
+                        <div>
+                          <p className="text-[9px] font-medium text-blue-100">
+                            Welcome back
+                          </p>
 
-                <div className="overflow-hidden rounded-[2rem] bg-white">
+                          <h2 className="mt-1 text-sm font-black text-white">
+                            Your Business App
+                          </h2>
+                        </div>
 
-                  <div className="flex items-center justify-between bg-[#006cb5] px-5 py-4">
-                    <span className="text-sm font-bold text-white">
-                      Your App
-                    </span>
+                        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 text-white">
+                          <FiSmartphone />
+                        </div>
 
-                    <FiSmartphone className="text-white" />
-                  </div>
+                      </div>
 
-                  <div className="space-y-4 p-5">
-
-                    <div className="h-28 rounded-2xl bg-[#eaf6ff]" />
-
-                    <div className="h-4 w-3/4 rounded bg-slate-200" />
-                    <div className="h-3 w-full rounded bg-slate-100" />
-                    <div className="h-3 w-5/6 rounded bg-slate-100" />
-
-                    <div className="grid grid-cols-2 gap-3 pt-3">
-                      <div className="h-16 rounded-xl bg-[#f1f5f9]" />
-                      <div className="h-16 rounded-xl bg-[#f1f5f9]" />
                     </div>
 
-                    <div className="h-11 rounded-xl bg-[#006cb5]" />
+                    {/* App Content */}
+                    <div className="p-4">
+
+                      {/* Balance / Overview */}
+                      <div className="rounded-2xl bg-[#eaf6ff] p-4">
+
+                        <p className="text-[9px] font-semibold uppercase tracking-wider text-[#006cb5]">
+                          Dashboard
+                        </p>
+
+                        <div className="mt-3 flex items-end justify-between">
+
+                          <div>
+                            <p className="text-[9px] text-slate-400">
+                              Monthly Activity
+                            </p>
+
+                            <p className="mt-1 text-2xl font-black text-[#071827]">
+                              8,420
+                            </p>
+                          </div>
+
+                          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#006cb5] text-white">
+                            <FiZap />
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                      {/* App Features */}
+                      <div className="mt-4 grid grid-cols-2 gap-3">
+
+                        <div className="rounded-xl border border-slate-100 p-3">
+
+                          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#eaf6ff] text-[#006cb5]">
+                            <FiLayers />
+                          </div>
+
+                          <p className="mt-3 text-[10px] font-bold text-[#071827]">
+                            Services
+                          </p>
+
+                          <p className="mt-1 text-[9px] text-slate-400">
+                            Manage easily
+                          </p>
+
+                        </div>
+
+                        <div className="rounded-xl border border-slate-100 p-3">
+
+                          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#eaf6ff] text-[#006cb5]">
+                            <FiCode />
+                          </div>
+
+                          <p className="mt-3 text-[10px] font-bold text-[#071827]">
+                            Features
+                          </p>
+
+                          <p className="mt-1 text-[9px] text-slate-400">
+                            Built for you
+                          </p>
+
+                        </div>
+
+                      </div>
+
+                      {/* Activity */}
+                      <div className="mt-4 rounded-xl border border-slate-100 p-4">
+
+                        <div className="flex items-center justify-between">
+
+                          <p className="text-[10px] font-bold text-[#071827]">
+                            Recent Activity
+                          </p>
+
+                          <span className="text-[9px] font-semibold text-[#006cb5]">
+                            View All
+                          </span>
+
+                        </div>
+
+                        <div className="mt-4 space-y-3">
+
+                          {[1, 2, 3].map((item) => (
+                            <div
+                              key={item}
+                              className="flex items-center gap-3"
+                            >
+
+                              <div className="h-8 w-8 rounded-lg bg-slate-100" />
+
+                              <div className="flex-1">
+
+                                <div className="h-2 w-3/4 rounded bg-slate-200" />
+
+                                <div className="mt-2 h-2 w-1/2 rounded bg-slate-100" />
+
+                              </div>
+
+                            </div>
+                          ))}
+
+                        </div>
+
+                      </div>
+
+                      {/* Bottom Navigation */}
+                      <div className="mt-4 flex items-center justify-around rounded-xl bg-[#071827] px-3 py-3">
+
+                        <div className="h-1.5 w-8 rounded-full bg-[#38a9f5]" />
+                        <div className="h-1.5 w-8 rounded-full bg-slate-600" />
+                        <div className="h-1.5 w-8 rounded-full bg-slate-600" />
+                        <div className="h-1.5 w-8 rounded-full bg-slate-600" />
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                {/* Floating Card */}
+                <div className="absolute -bottom-4 -left-6 rounded-xl border border-white/10 bg-[#006cb5] px-4 py-3 shadow-xl sm:-left-10">
+
+                  <div className="flex items-center gap-3">
+
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 text-[#70c8fa]">
+                      <FiCheckCircle />
+                    </div>
+
+                    <div>
+                      <p className="text-[10px] text-blue-100">
+                        Mobile Experience
+                      </p>
+
+                      <p className="text-xs font-bold text-white">
+                        Android & iOS Ready
+                      </p>
+                    </div>
 
                   </div>
 
@@ -120,83 +289,18 @@ export default function MobileApplicationPage() {
 
             </div>
 
-            {/* Right */}
-            <div className="order-1 lg:order-2">
-
-              <span className="inline-flex rounded-full bg-[#eaf6ff] px-4 py-2 text-sm font-bold text-[#006cb5]">
-                Mobile Solutions
-              </span>
-
-              <h2 className="mt-5 text-3xl font-bold leading-tight text-[#071827] sm:text-4xl">
-                Build Apps Your
-                <span className="block text-[#006cb5]">
-                  Customers Will Love
-                </span>
-              </h2>
-
-              <p className="mt-5 text-base leading-7 text-slate-600">
-                We can create mobile applications designed around your
-                business requirements, customers and workflows.
-              </p>
-
-              <div className="mt-7 grid gap-4 sm:grid-cols-2">
-
-                {features.map((feature) => (
-                  <div
-                    key={feature}
-                    className="flex items-center gap-3"
-                  >
-                    <FiCheckCircle className="shrink-0 text-[#006cb5]" />
-
-                    <span className="text-sm font-medium text-[#071827]">
-                      {feature}
-                    </span>
-                  </div>
-                ))}
-
-              </div>
-
-            </div>
-
           </div>
 
         </div>
 
       </section>
-
-      {/* CTA */}
-      <section className="bg-white py-16">
-
-        <div className="mx-auto max-w-5xl px-5">
-
-          <div className="rounded-3xl bg-[#071827] px-6 py-12 text-center sm:px-10">
-
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-[#006cb5] text-white">
-              <FiCode />
-            </div>
-
-            <h2 className="mt-5 text-3xl font-bold text-white sm:text-4xl">
-              Have a Mobile App Idea?
-            </h2>
-
-            <p className="mx-auto mt-4 max-w-2xl text-slate-400">
-              Let's discuss your requirements and turn your idea into
-              a professional mobile application.
-            </p>
-
-            <Link
-              href="/contact"
-              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-[#006cb5] px-7 py-3.5 text-sm font-bold text-white transition hover:bg-[#0086dc]"
-            >
-              Discuss Your App
-              <FiArrowRight />
-            </Link>
-
-          </div>
-
-        </div>
-
-      </section>
+      <MobileAppWhyChoose />
+      <MobileAppFeatures />
+      <MobileAppPlatforms />
+      <MobileAppOptimization />
+      <MobileAppSecurity />
+      <MobileAppProcess />
+      <MobileAppCTA />
 
     </main>
   );

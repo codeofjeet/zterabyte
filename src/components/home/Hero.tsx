@@ -1,145 +1,173 @@
-import Image from "next/image";
 import Link from "next/link";
 import {
   FiArrowRight,
   FiCheckCircle,
-  FiGift,
+  FiGlobe,
+  FiServer,
+  FiShield,
 } from "react-icons/fi";
 
 export default function Hero() {
   return (
-    <section className="relative isolate min-h-[620px] overflow-hidden">
+    <section className="relative overflow-hidden bg-[#071827]">
 
-      {/* =====================================================
-          BACKGROUND IMAGE
-      ====================================================== */}
-      <Image
-        src="/images/hero/festival-offer.jpg"
-        alt="Zterabyte Festival Offer"
-        fill
-        priority
-        className="object-cover object-center"
-      />
+      {/* Background Glow */}
+      <div className="absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-[#006cb5]/20 blur-3xl" />
 
-      {/* =====================================================
-          DARK OVERLAY
-      ====================================================== */}
-      <div className="absolute inset-0 bg-[#071827]/70" />
+      <div className="absolute -bottom-40 -left-40 h-[450px] w-[450px] rounded-full bg-[#006cb5]/10 blur-3xl" />
 
-      {/* =====================================================
-          BLUE GRADIENT OVERLAY
-      ====================================================== */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#071827]/95 via-[#071827]/75 to-[#006cb5]/30" />
+      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 sm:px-8 lg:grid-cols-2 lg:px-6 lg:py-28">
 
-      {/* =====================================================
-          DECORATIVE GLOW
-      ====================================================== */}
-      <div className="absolute -left-32 top-20 h-80 w-80 rounded-full bg-[#38a9f5]/20 blur-3xl" />
+        {/* Left Content */}
+        <div>
 
-      <div className="absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-[#006cb5]/30 blur-3xl" />
-
-
-      {/* =====================================================
-          CONTENT
-      ====================================================== */}
-      <div className="relative z-10 mx-auto flex min-h-[620px] max-w-7xl items-center px-5 py-20 lg:px-6">
-
-        <div className="max-w-3xl">
-
-          {/* Festival Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur-sm">
-
-            <FiGift className="text-[#62c7ff]" />
-
-            FESTIVE SPECIAL OFFER
-
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#006cb5]/40 bg-[#006cb5]/10 px-4 py-2 text-sm font-medium text-[#8ed1ff]">
+            <span className="h-2 w-2 rounded-full bg-[#4db5f5]" />
+            Complete Digital Solutions
           </div>
 
+          <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
 
-          {/* Heading */}
-          <h1 className="mt-6 text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
-
-            Grow Your Business
-
-            <span className="block text-[#55c4ff]">
-              Online This Season
+            Build Your Digital
+            <span className="block text-[#38a9f5]">
+              Presence With Zterabyte
             </span>
 
           </h1>
 
-
-          {/* Description */}
-          <p className="mt-6 max-w-2xl text-base leading-7 text-slate-200 sm:text-lg lg:text-xl">
-
-            Celebrate the season with special offers on domains,
-            web hosting, website development and digital marketing
-            solutions from Zterabyte.
-
+          <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
+            Domains, reliable hosting, professional business email,
+            websites, mobile applications, creative design and digital
+            marketing — everything your business needs to grow online.
           </p>
 
-
-          {/* Offer */}
-          <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
-
-            <div className="flex items-center gap-2 text-sm font-semibold text-white">
-
-              <FiCheckCircle className="text-[#55c4ff]" />
-
-              Special Festival Pricing
-
-            </div>
-
-            <div className="flex items-center gap-2 text-sm font-semibold text-white">
-
-              <FiCheckCircle className="text-[#55c4ff]" />
-
-              Limited Time Offer
-
-            </div>
-
-          </div>
-
-
-          {/* Buttons */}
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
 
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#006cb5] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-black/20 transition hover:bg-[#0086dc]"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#006cb5] px-6 py-3.5 font-semibold text-white transition hover:bg-[#0082d8]"
             >
-              Get Festival Offer
-
+              Get Started
               <FiArrowRight />
             </Link>
 
-
             <Link
               href="/services"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition hover:bg-white hover:text-[#071827]"
+              className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10"
             >
               Explore Services
-
-              <FiArrowRight />
             </Link>
 
           </div>
 
+          {/* Trust Points */}
+          <div className="mt-9 grid gap-3 sm:grid-cols-3">
 
-          {/* Small Offer Note */}
-          <p className="mt-5 text-xs text-slate-300">
-            *Offer availability and pricing may vary during the promotional period.
-          </p>
+            <div className="flex items-center gap-2 text-sm text-slate-300">
+              <FiCheckCircle className="text-[#38a9f5]" />
+              Reliable Services
+            </div>
+
+            <div className="flex items-center gap-2 text-sm text-slate-300">
+              <FiCheckCircle className="text-[#38a9f5]" />
+              Expert Support
+            </div>
+
+            <div className="flex items-center gap-2 text-sm text-slate-300">
+              <FiCheckCircle className="text-[#38a9f5]" />
+              Business Focused
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* Right Visual */}
+        <div className="relative">
+
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl backdrop-blur-sm">
+
+            {/* Domain Search Card */}
+            <div className="rounded-2xl bg-white p-6 shadow-xl">
+
+              <div className="mb-5 flex items-center gap-3">
+
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#eaf6ff] text-[#006cb5]">
+                  <FiGlobe className="text-xl" />
+                </div>
+
+                <div>
+                  <h3 className="font-bold text-[#071827]">
+                    Find Your Perfect Domain
+                  </h3>
+
+                  <p className="text-sm text-slate-500">
+                    Start your online journey today
+                  </p>
+                </div>
+
+              </div>
+
+              <div className="flex flex-col gap-3 sm:flex-row">
+
+                <input
+                  type="text"
+                  placeholder="yourbusiness"
+                  className="min-w-0 flex-1 rounded-lg border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-[#006cb5]"
+                />
+
+                <select className="rounded-lg border border-slate-200 px-3 py-3 text-sm text-slate-600 outline-none">
+                  <option>.com</option>
+                  <option>.in</option>
+                  <option>.net</option>
+                  <option>.org</option>
+                </select>
+
+                <button
+                  type="button"
+                  className="rounded-lg bg-[#006cb5] px-5 py-3 font-semibold text-white transition hover:bg-[#004f86]"
+                >
+                  Search
+                </button>
+
+              </div>
+
+            </div>
+
+            {/* Service Cards */}
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+
+              <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">
+                <FiServer className="mb-3 text-2xl text-[#38a9f5]" />
+
+                <h3 className="font-semibold text-white">
+                  Powerful Hosting
+                </h3>
+
+                <p className="mt-1 text-sm leading-6 text-slate-400">
+                  Fast and reliable hosting for your websites.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">
+                <FiShield className="mb-3 text-2xl text-[#38a9f5]" />
+
+                <h3 className="font-semibold text-white">
+                  Business Email
+                </h3>
+
+                <p className="mt-1 text-sm leading-6 text-slate-400">
+                  Professional email solutions for your business.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
 
       </div>
-
-
-      {/* =====================================================
-          BOTTOM SHAPE
-      ====================================================== */}
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white/10 to-transparent" />
-
     </section>
   );
 }
