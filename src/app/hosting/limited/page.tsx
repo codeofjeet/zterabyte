@@ -1,3 +1,4 @@
+import LimitedHostingHero from "@/components/hosting/LimitedHostingHero";
 import LimitedHostingPlans from "@/components/hosting/LimitedHostingPlans";
 import StatsCounter from "@/components/common/StatsCounter";
 import FAQ from "@/components/common/FAQ";
@@ -34,13 +35,14 @@ export default function LimitedHostingPage() {
   return (
     <main>
 
+      {/* Hero */}
+      <LimitedHostingHero />
+
       {/* Hosting Plans */}
       <LimitedHostingPlans />
 
       {/* Hosting Statistics */}
-      <StatsCounter
-        items={limitedHostingStats}
-      />
+      <StatsCounter items={limitedHostingStats} />
 
       {/* FAQ */}
       <FAQ

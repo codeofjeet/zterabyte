@@ -521,7 +521,7 @@ export default function DomainSection() {
   };
 
   return (
-    <section className="overflow-hidden bg-white py-20 lg:py-24">
+    <section id="domain-search" className="overflow-hidden bg-white py-20 lg:py-24">
 
       <div className="mx-auto max-w-7xl px-5 lg:px-6">
 

@@ -112,23 +112,23 @@ export default function Hero() {
 
                 <input
                   type="text"
-                  placeholder="yourbusiness"
+                  placeholder="Enter Your Business Name"
+                  disabled
                   className="min-w-0 flex-1 rounded-lg border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-[#006cb5]"
                 />
 
-                <select className="rounded-lg border border-slate-200 px-3 py-3 text-sm text-slate-600 outline-none">
+                <select disabled className="rounded-lg border border-slate-200 px-3 py-3 text-sm text-slate-600 outline-none">
                   <option>.com</option>
-                  <option>.in</option>
-                  <option>.net</option>
-                  <option>.org</option>
                 </select>
 
-                <button
-                  type="button"
+                {/* <button 
+                  type="button" */}
+                  <a href="#domain-search"
                   className="rounded-lg bg-[#006cb5] px-5 py-3 font-semibold text-white transition hover:bg-[#004f86]"
                 >
                   Search
-                </button>
+                  </a>
+                {/* </button> */}
 
               </div>
 

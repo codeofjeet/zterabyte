@@ -66,7 +66,7 @@ const plans = [
 
 export default function LimitedHostingPlans() {
   return (
-    <section className="bg-[#f6fafd] py-16 sm:py-20 lg:py-24">
+    <section id="hosting-plans" className="bg-[#f6fafd] py-16 sm:py-20 lg:py-24">
 
       <div className="mx-auto max-w-7xl px-5 lg:px-6">
 

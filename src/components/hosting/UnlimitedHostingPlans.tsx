@@ -72,7 +72,7 @@ const plans = [
 
 export default function UnlimitedHostingPlans() {
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-24">
+    <section id="hosting-plans" className="bg-white py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-6">
 
         {/* =====================================================

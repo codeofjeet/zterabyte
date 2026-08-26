@@ -1,3 +1,4 @@
+import UnlimitedHostingHero from "@/components/hosting/UnlimitedHostingHero";
 import UnlimitedHostingPlans from "@/components/hosting/UnlimitedHostingPlans";
 import StatsCounter from "@/components/common/StatsCounter";
 import FAQ from "@/components/common/FAQ";
@@ -33,6 +34,9 @@ const unlimitedHostingStats = [
 export default function UnlimitedHostingPage() {
   return (
     <main>
+
+      {/* Hero */}
+      <UnlimitedHostingHero />
 
       {/* Unlimited Hosting Plans */}
       <UnlimitedHostingPlans />
