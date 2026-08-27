@@ -136,7 +136,7 @@ export const navigation = [
           },
           {
             title: "SEO & SMO",
-            href: "/digital-marketing/seo",
+            href: "/digital-marketing/seo-smo",
           },
           {
             title: "On Page SEO",
