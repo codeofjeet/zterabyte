@@ -23,7 +23,7 @@ const services = [
     title: "Web Hosting",
     description:
       "Reliable and scalable hosting solutions designed to keep your websites fast, secure and available.",
-    href: "/hosting",
+    href: "/hosting/limited",
     tag: "Hosting",
   },
   {
@@ -31,7 +31,7 @@ const services = [
     title: "Email Hosting",
     description:
       "Professional business email solutions that help your company communicate with confidence.",
-    href: "/email-hosting",
+    href: "/email-hosting/business",
     tag: "Business Email",
   },
   {
@@ -39,7 +39,7 @@ const services = [
     title: "Website Development",
     description:
       "Modern websites and web applications built around your business goals and customer needs.",
-    href: "/development",
+    href: "/website-development/web-development",
     tag: "Development",
   },
   {
@@ -47,7 +47,7 @@ const services = [
     title: "Creative Design",
     description:
       "Build a memorable brand with professional logo, UI/UX and graphics design services.",
-    href: "/design",
+    href: "/design/logo-design",
     tag: "Design",
   },
   {

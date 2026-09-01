@@ -18,11 +18,11 @@ export default function Header() {
           <div className="flex items-center gap-5">
 
             <a
-              href="tel:+911234567890"
+              href="tel:+919119220608"
               className="flex items-center gap-2 whitespace-nowrap transition hover:text-[#6fc2f5]"
             >
               <FiPhone />
-              +91 12345 67890
+              +91 91192 20608
             </a>
 
             <a
