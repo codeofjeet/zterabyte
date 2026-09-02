@@ -3,10 +3,8 @@ import {
   FiCheckCircle,
   FiGlobe,
   FiRefreshCw,
-  FiServer,
   FiSettings,
   FiShield,
-  FiUsers,
 } from "react-icons/fi";
 
 const services = [
@@ -54,28 +52,6 @@ const services = [
       "Account security",
     ],
   },
-  {
-    icon: FiUsers,
-    title: "Domain Reseller",
-    description:
-      "Build your own domain-selling business with tools designed for agencies, developers and resellers.",
-    points: [
-      "Reseller opportunities",
-      "Customer management",
-      "Business focused tools",
-    ],
-  },
-  {
-    icon: FiServer,
-    title: "Domain & Hosting Setup",
-    description:
-      "Connect your domain with hosting and other website services for a complete online presence.",
-    points: [
-      "Domain connection",
-      "Hosting integration",
-      "Website setup support",
-    ],
-  },
 ];
 
 export default function DomainServices() {
@@ -83,7 +59,10 @@ export default function DomainServices() {
     <section className="overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-6">
 
-        {/* Heading */}
+        {/* =====================================================
+            HEADING
+        ====================================================== */}
+
         <div className="mx-auto max-w-3xl text-center">
 
           <span className="inline-flex items-center gap-2 rounded-full bg-[#eaf6ff] px-4 py-2 text-sm font-bold text-[#006cb5]">
@@ -106,8 +85,11 @@ export default function DomainServices() {
 
         </div>
 
-        {/* Services */}
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {/* =====================================================
+            SERVICES
+        ====================================================== */}
+
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
 
           {services.map((service) => {
             const Icon = service.icon;
@@ -149,10 +131,11 @@ export default function DomainServices() {
                 </div>
 
                 {/* Bottom */}
-                <div className="mt-6 flex items-center gap-2 text-sm font-bold text-[#006cb5]">
+                {/* <div className="mt-6 flex items-center gap-2 text-sm font-bold text-[#006cb5]">
                   Explore Service
+
                   <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
-                </div>
+                </div> */}
 
               </div>
             );
@@ -160,7 +143,10 @@ export default function DomainServices() {
 
         </div>
 
-        {/* Bottom Highlight */}
+        {/* =====================================================
+            BOTTOM HIGHLIGHT
+        ====================================================== */}
+
         <div className="mt-10 rounded-2xl border border-[#dbeeff] bg-[#f6fafd] p-6 sm:p-8">
 
           <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
@@ -172,6 +158,7 @@ export default function DomainServices() {
               </div>
 
               <div>
+
                 <h3 className="text-lg font-bold text-[#071827] sm:text-xl">
                   One Domain, Many Possibilities
                 </h3>
@@ -180,6 +167,7 @@ export default function DomainServices() {
                   Your domain can become the foundation of your website,
                   business email, online store and complete digital identity.
                 </p>
+
               </div>
 
             </div>

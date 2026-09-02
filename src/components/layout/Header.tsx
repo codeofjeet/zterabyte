@@ -13,9 +13,9 @@ export default function Header() {
           TOP BAR
       ========================== */}
       <div className="hidden bg-[#071827] text-white lg:block">
-        <div className="mx-auto flex w-full max-w-360 items-center gap-3 px-5 py-3 lg:px-6 text-sm">
+        <div className="mx-auto flex w-full max-w-600 items-center gap-20 px-5 py-3 lg:px-6 text-sm">
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-20">
 
             <a
               href="tel:+919119220608"
@@ -59,7 +59,7 @@ export default function Header() {
             width={180}
             height={45}
             priority
-            className="h-auto w-35 xl:w-37.5"
+            className="h-auto w-[140px] xl:w-[150px]"
           />
         </Link>
 
