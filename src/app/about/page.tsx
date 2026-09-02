@@ -99,7 +99,7 @@ const companyStats = [
 
 export default function AboutPage() {
   return (
-    <main>
+    <main className="w-full max-w-full overflow-x-clip">
 
       {/* =====================================================
           HERO
@@ -164,7 +164,7 @@ export default function AboutPage() {
 
         <div className="mx-auto max-w-7xl px-5 lg:px-6">
 
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <div className="grid min-w-0 items-center gap-12 lg:grid-cols-2">
 
             {/* Content */}
             <div>
@@ -403,13 +403,13 @@ export default function AboutPage() {
                     {service.text}
                   </p>
 
-                  <Link
+                  {/* <Link
                     href="/services"
                     className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#006cb5]"
                   >
                     Explore Service
                     <FiArrowRight />
-                  </Link>
+                  </Link> */}
 
                 </div>
               );
@@ -462,7 +462,7 @@ export default function AboutPage() {
 
 
             {/* Journey */}
-            <div className="space-y-4">
+            <div className="min-w-0 space-y-4">
 
               {[
                 {
@@ -488,7 +488,7 @@ export default function AboutPage() {
               ].map((item) => (
                 <div
                   key={item.number}
-                  className="flex gap-5 rounded-2xl border border-white/10 bg-white/5 p-5"
+                  className="flex min-w-0 gap-5 rounded-2xl border border-white/10 bg-white/5 p-5"
                 >
 
                   <span className="text-2xl font-black text-[#38a9f5]/30">

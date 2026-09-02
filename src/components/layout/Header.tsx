@@ -49,20 +49,18 @@ export default function Header() {
       <div className="mx-auto flex w-full max-w-360 items-center gap-4 px-5 py-3 lg:px-6">
 
         {/* Logo */}
-        <Link
-          href="/"
-          className="shrink-0"
-        >
-          <Image
-            src="/images/logo.png"
-            alt="Zterabyte"
-            width={180}
-            height={45}
-            priority
-            className="h-auto w-[140px] xl:w-[150px]"
-          />
+        <Link href="/" className="shrink-0">
+          <div className="relative h-[38px] w-[140px] xl:h-[42px] xl:w-[150px]">
+            <Image
+              src="/images/logo.png"
+              alt="Zterabyte"
+              fill
+              priority
+              sizes="(max-width: 1279px) 140px, 150px"
+              className="object-contain"
+            />
+          </div>
         </Link>
-
 
         {/* Desktop Navigation */}
         <div className="min-w-0 flex-1">
