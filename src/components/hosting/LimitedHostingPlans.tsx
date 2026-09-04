@@ -1,10 +1,9 @@
-import Link from "next/link";
+import PlanEnquiryModal from "@/components/common/PlanEnquiryModal";
 import {
   FiCheck,
   FiShield,
   FiZap,
   FiHeadphones,
-  FiArrowRight,
 } from "react-icons/fi";
 
 const plans = [
@@ -135,18 +134,15 @@ export default function LimitedHostingPlans() {
                 Billed monthly
               </p>
 
-              {/* CTA */}
-              <Link
-                href="/contact"
-                className={`mt-7 flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-sm font-bold transition ${
-                  plan.popular
-                    ? "bg-[#006cb5] text-white hover:bg-[#004f86]"
-                    : "border border-[#006cb5] text-[#006cb5] hover:bg-[#eaf6ff]"
-                }`}
-              >
-                Order Now
-                <FiArrowRight />
-              </Link>
+             {/* CTA */}
+              <PlanEnquiryModal
+                service="Limited Shared Hosting"
+                plan={plan.name}
+                price={`${plan.price}${plan.period}`}
+                billing="Monthly"
+                features={plan.features}
+              />
+              
 
               {/* Divider */}
               <div className="my-7 h-px bg-slate-100" />

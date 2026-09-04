@@ -3,8 +3,8 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import PlanEnquiryModal from "@/components/common/PlanEnquiryModal";
 import {
-  FiArrowRight,
   FiCalendar,
   FiCloud,
   FiGlobe,
@@ -425,13 +425,23 @@ export default function EnterpriseEmailPlans() {
 
 
                 {/* Buy */}
-                <Link
-                  href="/contact"
-                  className="mt-auto flex items-center justify-center gap-2 rounded-xl bg-[#006cb5] px-6 py-4 text-sm font-bold text-white transition hover:bg-[#0086dc]"
-                >
-                  Buy Enterprise Email
-                  <FiArrowRight />
-                </Link>
+                <PlanEnquiryModal
+                  service="Enterprise Email Hosting"
+                  plan={`Enterprise Email - ${accounts} Account${
+                    accounts > 1 ? "s" : ""
+                  }`}
+                  price={`₹${totalPrice.toLocaleString("en-IN")}`}
+                  billing={selectedDuration?.label || "1 Month"}
+                  features={[
+                    `${accounts} email account${accounts > 1 ? "s" : ""}`,
+                    `₹${BASE_PRICE} per account / month`,
+                    selectedDuration?.label || "1 Month",
+                    "30 GB mailbox storage",
+                    "Calendar & contacts",
+                    "Multi-device sync",
+                    "Email protection",
+                  ]}
+                />
 
                 <p className="mt-4 text-center text-xs text-slate-500">
                   Pricing shown is for demonstration and should

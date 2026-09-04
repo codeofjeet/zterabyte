@@ -31,3 +31,9 @@ body {
   background: var(--primary);
   color: #ffffff;
 }
+
+html {
+  scroll-behavior: smooth;
+  max-width: 100%;
+  scrollbar-gutter: stable;
+}
