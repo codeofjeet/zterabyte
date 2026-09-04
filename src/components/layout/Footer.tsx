@@ -148,9 +148,14 @@ const companyLinks = [
     title: "About Us",
     href: "/about",
   },
+  
   {
     title: "Contact Us",
     href: "/contact",
+  },
+  {
+    title: " Our Client",
+    href:"/our-client",
   },
   {
     title: "Privacy Policy",

@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import {
   FiCheckCircle,
+  FiGlobe,
   FiMail,
   FiPhone,
   FiSend,
@@ -33,6 +34,7 @@ export default function PlanEnquiryModal({
   const [formData, setFormData] = useState({
     name: "",
     company: "",
+    domain: "",
     phone: "",
     email: "",
     message: "",
@@ -80,7 +82,9 @@ I am interested in the following plan:
 Service: ${service}
 Plan: ${plan}
 ${price ? `Price: ${price}` : ""}
-Billing: ${billing}${
+Billing: ${billing}
+
+Domain Name: ${formData.domain || "Not provided"}${
     features.length > 0
       ? `
 
@@ -119,10 +123,38 @@ Please provide me with more information about this plan.`;
   ) {
     const { name, value } = e.target;
 
-    setFormData((previous) => ({
-      ...previous,
-      [name]: value,
-    }));
+    setFormData((previous) => {
+      const updatedData = {
+        ...previous,
+        [name]: value,
+      };
+
+      return {
+        ...updatedData,
+        message:
+          name === "domain"
+            ? `Hello Zterabyte,
+
+I am interested in the following plan:
+
+Service: ${service}
+Plan: ${plan}
+${price ? `Price: ${price}` : ""}
+Billing: ${billing}
+
+Domain Name: ${value || "Not provided"}${
+                features.length > 0
+                  ? `
+
+Selected Details:
+${features.map((feature) => `- ${feature}`).join("\n")}`
+                  : ""
+              }
+
+Please provide me with more information about this plan.`
+            : updatedData.message,
+      };
+    });
   }
 
   /* --------------------------------
@@ -324,6 +356,35 @@ Please provide me with more information about this plan.`;
                     />
                   </div>
 
+                  {/* Domain Name */}
+                  <div>
+                    <label
+                      htmlFor="plan-domain"
+                      className="mb-2 block text-sm font-semibold text-[#071827]"
+                    >
+                      Domain Name *
+                    </label>
+
+                    <div className="relative">
+                      <FiGlobe className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+
+                      <input
+                        id="plan-domain"
+                        name="domain"
+                        type="text"
+                        required
+                        value={formData.domain}
+                        onChange={handleChange}
+                        placeholder="example.com"
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50 py-3.5 pl-11 pr-4 text-sm text-[#071827] outline-none transition placeholder:text-slate-400 focus:border-[#006cb5] focus:bg-white focus:ring-2 focus:ring-[#006cb5]/10"
+                      />
+                    </div>
+
+                    <p className="mt-1.5 text-xs text-slate-400">
+                      Enter your existing or preferred domain name.
+                    </p>
+                  </div>
+
                   {/* Phone */}
                   <div>
                     <label
@@ -350,7 +411,7 @@ Please provide me with more information about this plan.`;
                   </div>
 
                   {/* Email */}
-                  <div>
+                  <div className="sm:col-span-2">
                     <label
                       htmlFor="plan-email"
                       className="mb-2 block text-sm font-semibold text-[#071827]"
