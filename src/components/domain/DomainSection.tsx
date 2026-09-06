@@ -208,7 +208,7 @@ export default function DomainSection() {
             }}
             placeholder="Enter your domain name"
             disabled={loading}
-            className="h-14 flex-1 rounded-xl border border-gray-300 bg-white px-5 text-base text-gray-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100 disabled:cursor-not-allowed disabled:bg-gray-50"
+            className="block h-14 min-h-14 w-full flex-1 appearance-none rounded-xl border border-gray-300 bg-white px-5 text-base leading-normal text-gray-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100 disabled:cursor-not-allowed disabled:bg-gray-50 sm:h-14"
           />
 
           <button
