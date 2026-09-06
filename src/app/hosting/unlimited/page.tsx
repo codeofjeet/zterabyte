@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import UnlimitedHostingHero from "@/components/hosting/UnlimitedHostingHero";
 import UnlimitedHostingPlans from "@/components/hosting/UnlimitedHostingPlans";
 import StatsCounter from "@/components/common/StatsCounter";
 import FAQ from "@/components/common/FAQ";
 import { hostingFAQ } from "@/components/common/hostingFAQ";
+
+export const metadata: Metadata = {
+  title: "Unlimited Web Hosting Services in Kota | Fast & Reliable Hosting - ZTERABYTE",
+  description:
+    "Get reliable Unlimited web hosting services with fast performance, SSL, business email and flexible hosting plans for your website from ZTERABYTE.",
+};
 
 const unlimitedHostingStats = [
   {

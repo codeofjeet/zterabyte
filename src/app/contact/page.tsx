@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import ContactPageHero from "@/components/contact/ContactPageHero";
 import ContactHero from "@/components/contact/ContactHero";
 import ContactForm from "@/components/contact/ContactForm";
 import ExpertSupport from "@/components/contact/ExpertSupport";
 import ContactNewsletter from "@/components/contact/ContactNewsletter";
+
+export const metadata: Metadata = {
+  title: "Contact ZTERABYTE | Website & Digital Marketing Services",
+  description:
+    "Contact ZTERABYTE for domain registration, hosting, website development, email hosting and digital marketing services.",
+};
 
 export default function ContactPage() {
   return (

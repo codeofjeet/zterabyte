@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import WebsiteDevelopmentHero from "@/components/website/WebsiteDevelopmentHero";
 import WhyChooseWebsite from "@/components/website/WhyChooseWebsite";
 import DevelopmentProcess from "@/components/website/DevelopmentProcess";
 import StatsCounter from "@/components/common/StatsCounter";
 import FAQ from "@/components/common/FAQ";
 import WebsiteDevelopmentCTA from "@/components/website/WebsiteDevelopmentCTA";
+
+export const metadata: Metadata = {
+  title: "Website Development Company in Kota | Web Design Services - ZTERABYTE",
+  description:
+    "ZTERABYTE provides professional website development and web design services in Kota for businesses, startups and organizations.",
+};
 
 const websiteStats = [
   {

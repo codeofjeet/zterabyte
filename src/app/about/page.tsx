@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import Link from "next/link";
 import StatsCounter from "@/components/common/StatsCounter";
 import {
@@ -13,6 +15,12 @@ import {
   FiUsers,
   FiTarget,
 } from "react-icons/fi";
+
+export const metadata: Metadata = {
+  title: "About ZTERABYTE | Digital Services in Kota - ZTERABYTE",
+  description:
+    "Register your domain name with ZTERABYTE. Find and manage .com, .in, .net, .org and other domain extensions with reliable domain services in Kota.",
+};
 
 const services = [
   {

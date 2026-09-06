@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import DomainHero from "@/components/domain/DomainHero";
 import DomainServices from "@/components/domain/DomainServices";
 import DomainSection from "@/components/domain/DomainSection";
@@ -6,6 +8,12 @@ import DomainWhyChoose from "@/components/domain/DomainWhyChoose";
 import DomainTransfer from "@/components/domain/DomainTransfer";
 import DomainSecurity from "@/components/domain/DomainSecurity";
 import DomainCTA from "@/components/domain/DomainCTA";
+
+export const metadata: Metadata = {
+  title: "Cheap Domain Registration in Kota | Buy Domain Name - ZTERABYTE",
+  description:
+    "Register your domain name with ZTERABYTE. Find and manage .com, .in, .net, .org and other domain extensions with reliable domain services in Kota.",
+};
 
 export default function DomainsPage() {
   return (
