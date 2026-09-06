@@ -69,10 +69,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title:
-    "Website Development & Digital Marketing Service in Kota- ZTERABYTE",
+  metadataBase: new URL("https://www.zterabyte.com"),
+
+  title: {
+    default:
+      "Website Development & Digital Marketing Company in Kota | ZTERABYTE",
+    template: "%s | ZTERABYTE",
+  },
+
   description:
-    "ZTERABYTE provides domain registration, web hosting, email hosting, website development, design and digital marketing solutions.",
+    "ZTERABYTE provides domain registration, web hosting, email hosting, website development, eCommerce development and digital marketing services in Kota and across India.",
+
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({

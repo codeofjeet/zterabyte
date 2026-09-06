@@ -1,3 +1,4 @@
+import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
 import Hero from "@/components/home/Hero";
 import TrustStats from "@/components/home/TrustStats";
 import Services from "@/components/home/Services";
@@ -15,6 +16,8 @@ import HomeCTA from "@/components/home/HomeCTA";
 export default function Home() {
   return (
     <>
+      <LocalBusinessSchema />
+
       <Hero />
 
       <TrustStats />
