@@ -233,144 +233,249 @@ export default function DomainExtensions() {
           </div>
 
           {/* Pricing Box */}
-          <div className="mt-10 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+            <div className="mt-10 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
 
-            {/* Table Header */}
-            <div className="flex flex-col gap-3 border-b border-slate-200 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7">
+              {/* =====================================================
+                  TABLE HEADER
+              ====================================================== */}
 
-              <div>
+              <div className="flex flex-col gap-4 border-b border-slate-200 px-5 py-5 sm:px-7 sm:py-6 lg:flex-row lg:items-center lg:justify-between">
 
-                <h4 className="text-xl font-bold text-[#071827] sm:text-2xl">
-                  Domain Price List
-                </h4>
+                <div>
+                  <h4 className="text-xl font-bold text-[#071827] sm:text-2xl">
+                    Domain Price List
+                  </h4>
 
-                <p className="mt-1 text-sm text-slate-500">
-                  Simple and transparent domain pricing.
-                </p>
+                  <p className="mt-1 text-sm text-slate-500">
+                    Simple and transparent domain pricing.
+                  </p>
+                </div>
+
+                <div className="flex w-fit items-center gap-2 rounded-lg bg-[#eaf6ff] px-3 py-2 text-xs font-semibold text-[#006cb5]">
+                  <FiShield />
+                  Secure Registration
+                </div>
 
               </div>
 
-              <div className="flex items-center gap-2 text-xs font-semibold text-[#006cb5]">
-                <FiShield />
-                Secure Registration
-              </div>
 
-            </div>
+              {/* =====================================================
+                  MOBILE + TABLET PRICING CARDS
+                  Visible below lg breakpoint
+              ====================================================== */}
 
-            {/* Responsive Table */}
-            <div className="overflow-x-auto">
+              <div className="space-y-3 p-4 sm:p-5 lg:hidden">
 
-              <table className="w-full min-w-[650px] border-collapse">
+                {pricing.map((item) => (
+                  <div
+                    key={item.extension}
+                    className="rounded-2xl border border-slate-200 bg-[#f8fbfd] p-4 transition hover:border-[#006cb5]/30 hover:shadow-sm sm:p-5"
+                  >
 
-                {/* =================================================
-                    TABLE HEAD
-                ================================================== */}
+                    {/* Domain Name */}
+                    <div className="flex items-center justify-between gap-3">
 
-                <thead>
+                      <span className="text-lg font-black text-[#006cb5] sm:text-xl">
+                        {item.extension}
+                      </span>
 
-                  <tr className="bg-[#071827] text-sm font-bold text-white">
+                      <span className="rounded-full bg-[#eaf6ff] px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-[#006cb5]">
+                        Domain
+                      </span>
 
-                    <th className="px-6 py-5 text-left">
-                      Domain
-                    </th>
+                    </div>
 
-                    <th className="px-6 py-5 text-center">
-                      Register
-                    </th>
 
-                    <th className="px-6 py-5 text-center">
-                      Renew
-                    </th>
-
-                    <th className="px-6 py-5 text-center">
-                      Transfer
-                    </th>
-
-                  </tr>
-
-                </thead>
-
-                {/* =================================================
-                    TABLE BODY
-                ================================================== */}
-
-                <tbody>
-
-                  {pricing.map((item, index) => (
-
-                    <tr
-                      key={item.extension}
-                      className={`transition hover:bg-[#f6fafd] ${
-                        index !== pricing.length - 1
-                          ? "border-b border-slate-100"
-                          : ""
-                      }`}
-                    >
-
-                      {/* Domain */}
-                      <td className="px-6 py-5">
-
-                        <span className="text-base font-bold text-[#071827]">
-                          {item.extension}
-                        </span>
-
-                      </td>
+                    {/* Pricing */}
+                    <div className="mt-4 grid grid-cols-3 gap-2 sm:gap-4">
 
                       {/* Register */}
-                      <td className="px-6 py-5 text-center">
+                      <div className="rounded-xl bg-white p-3 text-center shadow-sm sm:p-4">
 
-                        <span className="font-bold text-[#071827]">
+                        <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-400 sm:text-xs">
+                          Register
+                        </p>
+
+                        <p className="mt-1 text-sm font-bold text-[#071827] sm:text-base">
                           {item.register}
-                        </span>
+                        </p>
 
-                        <span className="ml-1 text-xs text-slate-400">
+                        <span className="text-[10px] text-slate-400">
                           /yr
                         </span>
 
-                      </td>
+                      </div>
+
 
                       {/* Renew */}
-                      <td className="px-6 py-5 text-center">
+                      <div className="rounded-xl bg-white p-3 text-center shadow-sm sm:p-4">
 
-                        <span className="font-semibold text-slate-700">
+                        <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-400 sm:text-xs">
+                          Renew
+                        </p>
+
+                        <p className="mt-1 text-sm font-bold text-slate-700 sm:text-base">
                           {item.renew}
-                        </span>
+                        </p>
 
-                        <span className="ml-1 text-xs text-slate-400">
+                        <span className="text-[10px] text-slate-400">
                           /yr
                         </span>
 
-                      </td>
+                      </div>
+
 
                       {/* Transfer */}
-                      <td className="px-6 py-5 text-center">
+                      <div className="rounded-xl bg-white p-3 text-center shadow-sm sm:p-4">
 
-                        <span className="font-semibold text-slate-700">
+                        <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-400 sm:text-xs">
+                          Transfer
+                        </p>
+
+                        <p className="mt-1 text-sm font-bold text-slate-700 sm:text-base">
                           {item.transfer}
-                        </span>
+                        </p>
 
-                        <span className="ml-1 text-xs text-slate-400">
+                        <span className="text-[10px] text-slate-400">
                           /yr
                         </span>
 
-                      </td>
+                      </div>
+
+                    </div>
+
+                  </div>
+                ))}
+
+              </div>
+
+
+              {/* =====================================================
+                  DESKTOP PRICING TABLE
+                  Visible from lg breakpoint
+              ====================================================== */}
+
+              <div className="hidden lg:block">
+
+                <table className="w-full border-collapse">
+
+                  {/* Table Head */}
+
+                  <thead>
+
+                    <tr className="bg-[#071827] text-sm font-bold text-white">
+
+                      <th className="px-6 py-5 text-left">
+                        Domain
+                      </th>
+
+                      <th className="px-6 py-5 text-center">
+                        Register
+                      </th>
+
+                      <th className="px-6 py-5 text-center">
+                        Renew
+                      </th>
+
+                      <th className="px-6 py-5 text-center">
+                        Transfer
+                      </th>
 
                     </tr>
 
-                  ))}
+                  </thead>
 
-                </tbody>
 
-              </table>
+                  {/* Table Body */}
+
+                  <tbody>
+
+                    {pricing.map((item, index) => (
+
+                      <tr
+                        key={item.extension}
+                        className={`transition hover:bg-[#f6fafd] ${
+                          index !== pricing.length - 1
+                            ? "border-b border-slate-100"
+                            : ""
+                        }`}
+                      >
+
+                        {/* Domain */}
+
+                        <td className="px-6 py-5">
+
+                          <span className="text-base font-bold text-[#071827]">
+                            {item.extension}
+                          </span>
+
+                        </td>
+
+
+                        {/* Register */}
+
+                        <td className="px-6 py-5 text-center">
+
+                          <span className="font-bold text-[#071827]">
+                            {item.register}
+                          </span>
+
+                          <span className="ml-1 text-xs text-slate-400">
+                            /yr
+                          </span>
+
+                        </td>
+
+
+                        {/* Renew */}
+
+                        <td className="px-6 py-5 text-center">
+
+                          <span className="font-semibold text-slate-700">
+                            {item.renew}
+                          </span>
+
+                          <span className="ml-1 text-xs text-slate-400">
+                            /yr
+                          </span>
+
+                        </td>
+
+
+                        {/* Transfer */}
+
+                        <td className="px-6 py-5 text-center">
+
+                          <span className="font-semibold text-slate-700">
+                            {item.transfer}
+                          </span>
+
+                          <span className="ml-1 text-xs text-slate-400">
+                            /yr
+                          </span>
+
+                        </td>
+
+                      </tr>
+
+                    ))}
+
+                  </tbody>
+
+                </table>
+
+              </div>
+
+
+              {/* =====================================================
+                  MOBILE/TABLET INFORMATION
+              ====================================================== */}
+
+              <div className="border-t border-slate-100 bg-[#f8fbfd] px-5 py-3 text-center text-xs text-slate-500 lg:hidden">
+                Registration, renewal and transfer prices are shown for each domain extension.
+              </div>
 
             </div>
-
-            {/* Mobile Hint */}
-            <div className="border-t border-slate-100 bg-[#f8fbfd] px-5 py-3 text-center text-xs text-slate-500 lg:hidden">
-              ← Swipe horizontally to view pricing →
-            </div>
-
-          </div>
 
         </div>
 
