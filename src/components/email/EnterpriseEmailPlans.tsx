@@ -1,9 +1,9 @@
-
 "use client";
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import PlanEnquiryModal from "@/components/common/PlanEnquiryModal";
+
 import {
   FiCalendar,
   FiCloud,
@@ -16,65 +16,75 @@ import {
   FiUser,
 } from "react-icons/fi";
 
-const BASE_PRICE = 100;
+/* ============================================================
+   BILLING DURATIONS
+   ============================================================ */
 
 const durations = [
   {
     months: 1,
     label: "1 Month",
+    price: 100,
+    salePrice: 89,
+    saleActive: false,
   },
   {
     months: 3,
     label: "3 Months",
+    price: 300,
+    salePrice: 249,
+    saleActive: false,
   },
   {
-    months: 6,
-    label: "6 Months",
+    months: 5,
+    label: "5 Months",
+    price: 600,
+    salePrice: 399,
+    saleActive: false,
   },
   {
     months: 12,
     label: "12 Months",
+    price: 1200,
+    salePrice: 899,
+    saleActive: false,
   },
 ];
+
+/* ============================================================
+   FEATURES
+   ============================================================ */
 
 const features = [
   {
     icon: FiCloud,
-    title: "30 GB Mailbox Storage",
+    title: "30 GB space per account",
     description:
-      "Generous storage for business emails and attachments.",
+      "Create professional email addresses using your own domain.",
+  },
+  {
+    icon: FiMail,
+    title: "Get Additional Storage at 25.00/5GB",
+    description:
+      "Buy Additional Storage for more space."
   },
   {
     icon: FiGlobe,
-    title: "Professional Email",
+    title: "Custom Email",
     description:
-      "Create email addresses using your own domain name.",
+      "Email IDs like yourname@yourdomain.com for a professional business identity.",
   },
   {
     icon: FiCalendar,
     title: "Calendar & Contacts",
     description:
-      "Manage calendars, contacts, meetings and schedules.",
-  },
-  {
-    icon: FiSmartphone,
-    title: "Multi-device Sync",
-    description:
-      "Access and synchronize your email across your devices.",
-  },
-  {
-    icon: FiShield,
-    title: "Email Protection",
-    description:
-      "Security features help protect your business communication.",
-  },
-  {
-    icon: FiMail,
-    title: "Auto Responder",
-    description:
-      "Automatically respond to incoming messages when needed.",
+      "Organize your contacts, meetings and business schedule.",
   },
 ];
+
+/* ============================================================
+   COMPONENT
+   ============================================================ */
 
 export default function EnterpriseEmailPlans() {
   const [accounts, setAccounts] = useState(1);
@@ -84,9 +94,50 @@ export default function EnterpriseEmailPlans() {
     (item) => item.months === duration
   );
 
+  /* ============================================================
+     PRICE CALCULATION
+     ============================================================ */
+
+  const regularTotalPrice = useMemo(() => {
+    if (!selectedDuration) return 0;
+
+    return accounts * selectedDuration.price;
+  }, [accounts, selectedDuration]);
+
   const totalPrice = useMemo(() => {
-    return accounts * BASE_PRICE * duration;
-  }, [accounts, duration]);
+    if (!selectedDuration) return 0;
+
+    const finalPrice = selectedDuration.saleActive
+      ? selectedDuration.salePrice
+      : selectedDuration.price;
+
+    return accounts * finalPrice;
+  }, [accounts, selectedDuration]);
+
+  const saleActive = selectedDuration?.saleActive ?? false;
+
+  const regularPricePerAccount = selectedDuration?.price ?? 0;
+
+  const finalPricePerAccount = selectedDuration
+    ? selectedDuration.saleActive
+      ? selectedDuration.salePrice
+      : selectedDuration.price
+    : 0;
+
+  /*
+   * Effective monthly price for dropdown / display.
+   *
+   * Example:
+   * 12 Months sale price = ₹899
+   * ₹899 ÷ 12 = ₹74.92 / account / month
+   */
+  const monthlyPricePerAccount = selectedDuration
+    ? finalPricePerAccount / selectedDuration.months
+    : 0;
+
+  /* ============================================================
+     ACCOUNT CONTROLS
+     ============================================================ */
 
   const increaseAccounts = () => {
     setAccounts((current) => Math.min(current + 1, 200));
@@ -138,7 +189,6 @@ export default function EnterpriseEmailPlans() {
           </div>
 
         </div>
-
       </section>
 
 
@@ -161,7 +211,7 @@ export default function EnterpriseEmailPlans() {
               <div className="p-7 sm:p-9 lg:col-span-1">
 
                 <span className="text-sm font-bold uppercase tracking-wider text-[#006cb5]">
-                  What's Included
+                  What&apos;s Included
                 </span>
 
                 <h2 className="mt-3 text-2xl font-bold text-[#071827]">
@@ -229,7 +279,10 @@ export default function EnterpriseEmailPlans() {
                 </p>
 
 
-                {/* Accounts */}
+                {/* =================================================
+                    ACCOUNTS
+                ================================================== */}
+
                 <div className="mt-8">
 
                   <label className="text-sm font-semibold text-[#071827]">
@@ -277,57 +330,105 @@ export default function EnterpriseEmailPlans() {
                 </div>
 
 
-                {/* Duration */}
+                {/* =================================================
+                    DURATION
+                ================================================== */}
+
                 <div className="mt-7">
 
                   <label
-                    htmlFor="duration"
+                    htmlFor="enterprise-email-duration"
                     className="text-sm font-semibold text-[#071827]"
                   >
                     Billing Duration
                   </label>
 
                   <select
-                    id="duration"
+                    id="enterprise-email-duration"
                     value={duration}
                     onChange={(event) =>
-                      setDuration(
-                        Number(event.target.value)
-                      )
+                      setDuration(Number(event.target.value))
                     }
                     className="mt-3 w-full rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm font-medium text-[#071827] outline-none transition focus:border-[#006cb5] focus:ring-2 focus:ring-[#006cb5]/10"
                   >
 
-                    {durations.map((item) => (
-                      <option
-                        key={item.months}
-                        value={item.months}
-                      >
-                        {item.label}
-                      </option>
-                    ))}
+                    {durations.map((item) => {
+                      const finalPrice = item.saleActive
+                        ? item.salePrice
+                        : item.price;
+
+                      const monthlyPrice =
+                        finalPrice / item.months;
+
+                      return (
+                        <option
+                          key={item.months}
+                          value={item.months}
+                        >
+                          {item.label} @ ₹
+                          {monthlyPrice.toLocaleString("en-IN", {
+                            maximumFractionDigits: 2,
+                          })}
+                          /acc/mo
+                        </option>
+                      );
+                    })}
 
                   </select>
 
                 </div>
 
+                {/* Note */}
+                 <p className="mt-4 font-light leading-tight text-[#071827]">
+                      You can add more Business Email accounts for your panel, as your business grows!
+                 </p>  
 
-                {/* Price info */}
-                <div className="mt-7 rounded-2xl border border-[#d8edfb] bg-[#eaf6ff] p-5">
 
-                  <div className="flex items-center justify-between">
+                {/* =================================================
+                    PRICE INFO
+                ================================================== */}
+
+                {/* <div className="mt-7 rounded-2xl border border-[#d8edfb] bg-[#eaf6ff] p-5">
+                  <div className="flex items-center justify-between gap-4">
 
                     <span className="text-sm text-slate-600">
-                      Price per account / month
+                      Regular price per account
                     </span>
 
-                    <span className="font-bold text-[#006cb5]">
-                      ₹{BASE_PRICE}
+                    <span
+                      className={
+                        saleActive
+                          ? "font-semibold text-slate-400 line-through"
+                          : "font-bold text-[#006cb5]"
+                      }
+                    >
+                      ₹
+                      {regularPricePerAccount.toLocaleString(
+                        "en-IN"
+                      )}
                     </span>
 
                   </div>
 
-                  <div className="mt-3 flex items-center justify-between">
+                  {saleActive && (
+                    <div className="mt-3 flex items-center justify-between gap-4">
+
+                      <span className="text-sm text-slate-600">
+                        Sale price per account
+                      </span>
+
+                      <span className="font-bold text-[#006cb5]">
+                        ₹
+                        {finalPricePerAccount.toLocaleString(
+                          "en-IN"
+                        )}
+                      </span>
+
+                    </div>
+                  )}
+
+
+                  <div className="mt-3 flex items-center justify-between gap-4">
 
                     <span className="text-sm text-slate-600">
                       Accounts
@@ -339,7 +440,7 @@ export default function EnterpriseEmailPlans() {
 
                   </div>
 
-                  <div className="mt-3 flex items-center justify-between">
+                  <div className="mt-3 flex items-center justify-between gap-4">
 
                     <span className="text-sm text-slate-600">
                       Duration
@@ -351,7 +452,7 @@ export default function EnterpriseEmailPlans() {
 
                   </div>
 
-                </div>
+                </div> */}
 
               </div>
 
@@ -378,21 +479,40 @@ export default function EnterpriseEmailPlans() {
                 {/* Price */}
                 <div className="mt-10">
 
+                  {saleActive && (
+                    <span className="block text-lg font-semibold text-slate-500 line-through">
+                      ₹
+                      {regularTotalPrice.toLocaleString(
+                        "en-IN"
+                      )}
+                    </span>
+                  )}
+
                   <span className="text-5xl font-black tracking-tight text-white sm:text-6xl">
                     ₹{totalPrice.toLocaleString("en-IN")}
                   </span>
 
                   <p className="mt-2 text-sm text-slate-400">
-                    Total for {selectedDuration?.label.toLowerCase()}
+                    Total for{" "}
+                    {selectedDuration?.label.toLowerCase()}
                   </p>
+
+                  {saleActive && (
+                    <span className="mt-3 inline-flex rounded-full bg-red-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-red-300">
+                      Sale Price
+                    </span>
+                  )}
 
                 </div>
 
 
-                {/* Calculation */}
+                {/* =================================================
+                    CALCULATION
+                ================================================== */}
+
                 <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-5">
 
-                  <div className="flex items-center justify-between text-sm">
+                  <div className="flex items-center justify-between gap-4 text-sm">
 
                     <span className="text-slate-400">
                       {accounts} accounts
@@ -401,14 +521,16 @@ export default function EnterpriseEmailPlans() {
                     <span className="font-semibold text-white">
                       ₹
                       {(
-                        accounts * BASE_PRICE
-                      ).toLocaleString("en-IN")}
-                      /month
+                        accounts * monthlyPricePerAccount
+                      ).toLocaleString("en-IN", {
+                        maximumFractionDigits: 2,
+                      })}
                     </span>
 
                   </div>
 
-                  <div className="mt-3 flex items-center justify-between text-sm">
+
+                  <div className="mt-3 flex items-center justify-between gap-4 text-sm">
 
                     <span className="text-slate-400">
                       Duration
@@ -421,21 +543,63 @@ export default function EnterpriseEmailPlans() {
 
                   </div>
 
+
+                  {saleActive && (
+                    <div className="mt-3 flex items-center justify-between gap-4 text-sm">
+
+                      <span className="text-slate-400">
+                        Regular total
+                      </span>
+
+                      <span className="font-semibold text-slate-500 line-through">
+                        ₹
+                        {regularTotalPrice.toLocaleString(
+                          "en-IN"
+                        )}
+                      </span>
+
+                    </div>
+                  )}
+
                 </div>
 
 
-                {/* Buy */}
+                {/* =================================================
+                    ORDER NOW
+                ================================================== */}
+
                 <PlanEnquiryModal
                   service="Enterprise Email Hosting"
                   plan={`Enterprise Email - ${accounts} Account${
                     accounts > 1 ? "s" : ""
                   }`}
-                  price={`₹${totalPrice.toLocaleString("en-IN")}`}
-                  billing={selectedDuration?.label || "1 Month"}
+                  price={`₹${totalPrice.toLocaleString(
+                    "en-IN"
+                  )}`}
+                  billing={
+                    selectedDuration?.label || "1 Month"
+                  }
                   features={[
-                    `${accounts} email account${accounts > 1 ? "s" : ""}`,
-                    `₹${BASE_PRICE} per account / month`,
+                    `${accounts} email account${
+                      accounts > 1 ? "s" : ""
+                    }`,
+
+                    saleActive
+                      ? `Sale price: ₹${monthlyPricePerAccount.toLocaleString(
+                          "en-IN",
+                          {
+                            maximumFractionDigits: 2,
+                          }
+                        )} per account / month`
+                      : `₹${monthlyPricePerAccount.toLocaleString(
+                          "en-IN",
+                          {
+                            maximumFractionDigits: 2,
+                          }
+                        )} per account / month`,
+
                     selectedDuration?.label || "1 Month",
+
                     "30 GB mailbox storage",
                     "Calendar & contacts",
                     "Multi-device sync",
@@ -443,9 +607,9 @@ export default function EnterpriseEmailPlans() {
                   ]}
                 />
 
+
                 <p className="mt-4 text-center text-xs text-slate-500">
-                  Pricing shown is for demonstration and should
-                  be replaced with Zterabyte's actual pricing.
+                  * All prices shown are inclusive of 18% GST.
                 </p>
 
               </div>
@@ -492,17 +656,20 @@ export default function EnterpriseEmailPlans() {
               {
                 icon: FiMail,
                 title: "Professional Identity",
-                text: "Use your own domain for professional business communication.",
+                text:
+                  "Use your own domain for professional business communication.",
               },
               {
                 icon: FiShield,
                 title: "Security Focused",
-                text: "Protect business communication with email security features.",
+                text:
+                  "Protect business communication with email security features.",
               },
               {
                 icon: FiSmartphone,
                 title: "Work Anywhere",
-                text: "Access your business email across desktop and mobile devices.",
+                text:
+                  "Access your business email across desktop and mobile devices.",
               },
             ].map((item) => {
               const Icon = item.icon;

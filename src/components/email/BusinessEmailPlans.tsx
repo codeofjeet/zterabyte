@@ -8,6 +8,7 @@ import {
   FiArrowRight,
   FiCalendar,
   FiCheck,
+  FiCloud,
   FiGlobe,
   FiHeadphones,
   FiMail,
@@ -59,28 +60,22 @@ const durations = [
 
 const features = [
   {
-    icon: FiMail,
+    icon: FiCloud,
     title: "5 GB space per account",
     description:
       "Create professional email addresses using your own domain.",
   },
   {
+    icon: FiMail,
+    title: "Get Additional Storage at ₹40.00/5GB",
+    description:
+      "Buy Additional Storage for more space."
+  },
+  {
     icon: FiGlobe,
-    title: "Custom Domain",
+    title: "Custom Email",
     description:
       "Email IDs like yourname@yourdomain.com for a professional business identity.",
-  },
-  {
-    icon: FiSmartphone,
-    title: "Multi-device Access",
-    description:
-      "Access your business email from desktop, tablet and mobile.",
-  },
-  {
-    icon: FiShield,
-    title: "Spam Protection",
-    description:
-      "Help keep unwanted and suspicious messages away from your inbox.",
   },
   {
     icon: FiCalendar,
@@ -414,7 +409,6 @@ export default function BusinessEmailPlans() {
                 </div>
 
                 {/* Note */}
-
                  <p className="mt-4 font-light leading-tight text-[#071827]">
                       You can add more Business Email accounts for your panel, as your business grows!
                  </p>   
@@ -676,9 +670,9 @@ export default function BusinessEmailPlans() {
               },
               {
                 icon: FiSmartphone,
-                title: "Mobile Access",
+                title: "Multi-device Access",
                 text:
-                  "Stay connected to your business email wherever you work.",
+                  "Access your business email from desktop, tablet and mobile devices.",
               },
               {
                 icon: FiHeadphones,
