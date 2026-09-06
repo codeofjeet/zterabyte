@@ -28,17 +28,17 @@ export default function Hero() {
 
           <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
 
-            Build Your Digital
+            Powering Your Business with
             <span className="block text-[#38a9f5]">
-              Presence With Zterabyte
+              Smart Digital Solutions
             </span>
 
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
-            Domains, reliable hosting, professional business email,
-            websites, mobile applications, creative design and digital
-            marketing — everything your business needs to grow online.
+            Domains, Reliable Hosting, Professional Business Email,
+            Websites, Mobile Applications, Creative Design and Digital
+            Marketing - everything your business needs to grow online.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">

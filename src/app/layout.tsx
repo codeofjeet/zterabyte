@@ -68,9 +68,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Zterabyte | Digital & Hosting Solutions",
+  title: "Website Development & Digital Marketing Service in Kota- ZTERABYTE",
   description:
-    "Zterabyte provides domain registration, web hosting, email hosting, website development, design and digital marketing solutions.",
+    "ZTERABYTE provides domain registration, web hosting, email hosting, website development, design and digital marketing solutions.",
 };
 
 export default function RootLayout({
