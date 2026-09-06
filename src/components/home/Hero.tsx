@@ -16,7 +16,7 @@ export default function Hero() {
 
       <div className="absolute -bottom-40 -left-40 h-[450px] w-[450px] rounded-full bg-[#006cb5]/10 blur-3xl" />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 sm:px-8 lg:grid-cols-2 lg:px-6 lg:py-10">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 sm:px-8 lg:grid-cols-2 lg:px-6 lg:py-16">
 
         {/* Left Content */}
         <div>
