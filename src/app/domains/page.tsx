@@ -1,5 +1,6 @@
 import DomainHero from "@/components/domain/DomainHero";
 import DomainServices from "@/components/domain/DomainServices";
+import DomainSection from "@/components/domain/DomainSection";
 import DomainExtensions from "@/components/domain/DomainExtensions";
 import DomainWhyChoose from "@/components/domain/DomainWhyChoose";
 import DomainTransfer from "@/components/domain/DomainTransfer";
@@ -11,6 +12,7 @@ export default function DomainsPage() {
     <main className="w-full overflow-x-hidden bg-white">
       <DomainHero />
       <DomainServices />
+      <DomainSection />
       <DomainExtensions />
       <DomainWhyChoose />
       <DomainTransfer />

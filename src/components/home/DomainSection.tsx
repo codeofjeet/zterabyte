@@ -370,6 +370,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import {
   FiGlobe,
   FiSearch,
@@ -390,10 +391,6 @@ const extensions = [
     label: "India",
   },
   {
-    extension: ".net",
-    label: "Technology",
-  },
-  {
     extension: ".org",
     label: "Organization",
   },
@@ -411,11 +408,8 @@ type DomainResult = {
 
 export default function DomainSection() {
   const [domain, setDomain] = useState("");
-
   const [loading, setLoading] = useState(false);
-
   const [results, setResults] = useState<DomainResult[]>([]);
-
   const [error, setError] = useState("");
 
   const handleSearch = async () => {
@@ -446,26 +440,15 @@ export default function DomainSection() {
 
     for (const extension of knownExtensions) {
       if (baseName.endsWith(extension)) {
-        baseName = baseName.slice(
-          0,
-          -extension.length
-        );
-
+        baseName = baseName.slice(0, -extension.length);
         break;
       }
     }
 
     // Basic validation
-    if (
-      !/^[a-z0-9-]+$/.test(baseName) ||
-      baseName.length < 2
-    ) {
-      setError(
-        "Please enter a valid domain name."
-      );
-
+    if (!/^[a-z0-9-]+$/.test(baseName) || baseName.length < 2) {
+      setError("Please enter a valid domain name.");
       setResults([]);
-
       return;
     }
 
@@ -485,15 +468,18 @@ export default function DomainSection() {
           const response = await fetch(
             `/api/domain/availability?domain=${encodeURIComponent(
               domainName
-            )}`
+            )}`,
+            {
+              method: "GET",
+              cache: "no-store",
+            }
           );
 
           const data = await response.json();
 
           if (!response.ok || !data.success) {
             throw new Error(
-              data.message ||
-                "Unable to check domain."
+              data.message || "Unable to check domain."
             );
           }
 
@@ -507,29 +493,27 @@ export default function DomainSection() {
 
       setResults(responses);
     } catch (error) {
-      console.error(
-        "Domain search error:",
-        error
-      );
+      console.error("Domain search error:", error);
 
       setError(
         "Unable to check domain availability. Please try again."
       );
+
+      setResults([]);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section id="domain-search" className="overflow-hidden bg-white py-20 lg:py-24">
-
+    <section
+      id="domain-search"
+      className="overflow-hidden bg-white py-20 lg:py-24"
+    >
       <div className="mx-auto max-w-7xl px-5 lg:px-6">
-
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
 
-          {/* =====================================================
-              LEFT CONTENT
-          ====================================================== */}
+          {/* LEFT CONTENT */}
           <div>
 
             {/* Label */}
@@ -540,13 +524,11 @@ export default function DomainSection() {
 
             {/* Heading */}
             <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-[#071827] sm:text-4xl lg:text-5xl">
-
               Find the Perfect
 
               <span className="block text-[#006cb5]">
                 Domain for Your Business
               </span>
-
             </h2>
 
             {/* Description */}
@@ -556,16 +538,13 @@ export default function DomainSection() {
               professional presence on the internet.
             </p>
 
-            {/* =================================================
-                SEARCH BOX
-            ================================================== */}
+            {/* SEARCH BOX */}
             <div className="mt-8 rounded-2xl border border-slate-200 bg-[#f6fafd] p-3 shadow-sm">
 
               <div className="flex flex-col gap-3 sm:flex-row">
 
                 {/* Input */}
                 <div className="relative flex-1">
-
                   <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-lg text-slate-400" />
 
                   <input
@@ -585,17 +564,15 @@ export default function DomainSection() {
                     disabled={loading}
                     className="w-full rounded-xl border border-slate-200 bg-white py-3.5 pl-11 pr-4 text-sm text-[#071827] outline-none transition placeholder:text-slate-400 focus:border-[#006cb5] focus:ring-2 focus:ring-[#006cb5]/10 disabled:cursor-not-allowed disabled:bg-slate-50"
                   />
-
                 </div>
 
-                {/* Button */}
+                {/* Check Domain Button */}
                 <button
                   type="button"
                   onClick={handleSearch}
                   disabled={loading}
                   className="flex items-center justify-center gap-2 rounded-xl bg-[#006cb5] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#004f86] disabled:cursor-not-allowed disabled:opacity-70"
                 >
-
                   {loading ? (
                     <>
                       <FiLoader className="animate-spin" />
@@ -607,7 +584,6 @@ export default function DomainSection() {
                       Check Domain
                     </>
                   )}
-
                 </button>
 
               </div>
@@ -620,33 +596,25 @@ export default function DomainSection() {
                 >
                   <FiXCircle className="shrink-0 text-lg" />
 
-                  <span>
-                    {error}
-                  </span>
-
+                  <span>{error}</span>
                 </div>
               )}
 
             </div>
 
-
-            {/* =================================================
-                MULTIPLE DOMAIN RESULTS
-            ================================================== */}
+            {/* DOMAIN RESULTS */}
             {results.length > 0 && (
               <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
 
                 {/* Header */}
                 <div className="border-b border-slate-100 bg-[#f6fafd] px-5 py-4">
-
                   <h3 className="font-bold text-[#071827]">
                     Domain Availability
                   </h3>
 
                   <p className="mt-1 text-xs text-slate-500">
-                    We checked the most popular extensions for you.
+                    Check the availability of your preferred domain.
                   </p>
-
                 </div>
 
                 {/* Results */}
@@ -658,6 +626,7 @@ export default function DomainSection() {
                       className="flex items-center justify-between gap-4 px-5 py-4"
                     >
 
+                      {/* Domain + Status */}
                       <div className="flex min-w-0 items-center gap-3">
 
                         {item.available ? (
@@ -671,7 +640,6 @@ export default function DomainSection() {
                         )}
 
                         <div className="min-w-0">
-
                           <p className="truncate text-sm font-bold text-[#071827]">
                             {item.domain}
                           </p>
@@ -684,48 +652,40 @@ export default function DomainSection() {
                             }`}
                           >
                             {item.available
-                              ? "Available"
-                              : "Not Available"}
+                              ? "Domain Available"
+                              : "Already Registered"}
                           </p>
-
                         </div>
 
                       </div>
 
-
                       {/* Register Button */}
                       {item.available && (
-                        <button
-                          type="button"
+                        <Link
+                          href="/domains"
                           className="shrink-0 rounded-lg bg-[#006cb5] px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-[#004f86]"
                         >
                           Register
-                        </button>
+                        </Link>
                       )}
 
                     </div>
                   ))}
 
                 </div>
-
               </div>
             )}
 
-
-            {/* =================================================
-                BENEFITS
-            ================================================== */}
+            {/* BENEFITS */}
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
 
               {/* Easy Registration */}
               <div className="flex items-start gap-3">
-
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#eaf6ff] text-[#006cb5]">
                   <FiCheckCircle />
                 </div>
 
                 <div>
-
                   <h3 className="font-semibold text-[#071827]">
                     Easy Registration
                   </h3>
@@ -733,21 +693,16 @@ export default function DomainSection() {
                   <p className="mt-1 text-sm text-slate-500">
                     Simple domain registration process.
                   </p>
-
                 </div>
-
               </div>
-
 
               {/* Secure Management */}
               <div className="flex items-start gap-3">
-
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#eaf6ff] text-[#006cb5]">
                   <FiShield />
                 </div>
 
                 <div>
-
                   <h3 className="font-semibold text-[#071827]">
                     Secure Management
                   </h3>
@@ -755,19 +710,14 @@ export default function DomainSection() {
                   <p className="mt-1 text-sm text-slate-500">
                     Manage your domains with confidence.
                   </p>
-
                 </div>
-
               </div>
 
             </div>
 
           </div>
 
-
-          {/* =====================================================
-              RIGHT VISUAL
-          ====================================================== */}
+          {/* RIGHT VISUAL */}
           <div className="relative">
 
             <div className="relative overflow-hidden rounded-3xl bg-[#071827] p-7 shadow-2xl sm:p-9">
@@ -795,15 +745,12 @@ export default function DomainSection() {
 
                 {/* Domain Extensions */}
                 <div className="mt-7 space-y-3">
-
                   {extensions.map((item) => (
                     <div
                       key={item.extension}
                       className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3 transition hover:bg-white/10"
                     >
-
                       <div className="flex items-center gap-3">
-
                         <span className="font-bold text-[#38a9f5]">
                           {item.extension}
                         </span>
@@ -811,37 +758,29 @@ export default function DomainSection() {
                         <span className="text-sm text-slate-400">
                           {item.label}
                         </span>
-
                       </div>
 
                       <FiCheckCircle className="text-[#38a9f5]" />
-
                     </div>
                   ))}
-
                 </div>
 
                 {/* Bottom */}
                 <div className="mt-7 flex items-center gap-3 rounded-xl bg-[#006cb5]/20 p-4">
-
                   <FiSettings className="text-xl text-[#38a9f5]" />
 
                   <p className="text-sm text-slate-300">
                     Manage your domains from one convenient place.
                   </p>
-
                 </div>
 
               </div>
-
             </div>
 
           </div>
 
         </div>
-
       </div>
-
     </section>
   );
 }

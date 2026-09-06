@@ -1,3 +1,4 @@
+
 import {
   FiArrowRight,
   FiCheckCircle,
@@ -115,7 +116,7 @@ const pricing = [
 
 export default function DomainExtensions() {
   return (
-    <section className="overflow-hidden bg-[#f6fafd] py-16 sm:py-20 lg:py-24">
+    <section className="overflow-hidden bg-[#f6fafd] py-16 sm:py-20 lg:py-4">
       <div className="mx-auto max-w-7xl px-5 lg:px-6">
 
         {/* =====================================================
@@ -193,6 +194,12 @@ export default function DomainExtensions() {
           ))}
 
         </div>
+
+      {/* =====================================================
+            DOMAIN SEARCH
+        ====================================================== */}
+
+
 
         {/* =====================================================
             DOMAIN PRICE LIST
@@ -409,4 +416,7 @@ export default function DomainExtensions() {
       </div>
     </section>
   );
+
+
 }
+

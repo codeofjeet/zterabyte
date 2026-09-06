@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 
+type RdapBootstrap = {
+  services: [string[], string[]][];
+};
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-
     const domain = searchParams.get("domain");
 
     if (!domain) {
@@ -22,11 +25,12 @@ export async function GET(request: NextRequest) {
       .toLowerCase()
       .replace(/^https?:\/\//, "")
       .replace(/^www\./, "")
-      .replace(/\/.*$/, "");
+      .replace(/\/.*$/, "")
+      .replace(/\.$/, "");
 
     // Basic validation
     const domainRegex =
-      /^(?!-)[a-z0-9-]+(?:\.[a-z0-9-]+)+$/;
+      /^(?!-)(?:[a-z0-9-]+\.)+[a-z]{2,}$/i;
 
     if (!domainRegex.test(cleanDomain)) {
       return NextResponse.json(
@@ -39,44 +43,32 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Get API key from environment
-    const apiKey = process.env.WHOISXML_API_KEY;
+    // Get TLD
+    const parts = cleanDomain.split(".");
+    const tld = parts[parts.length - 1];
 
-    if (!apiKey) {
-      console.error("WHOISXML_API_KEY is missing.");
-
+    if (!tld) {
       return NextResponse.json(
         {
           success: false,
-          message:
-            "Domain availability service is not configured.",
+          message: "Invalid domain name.",
         },
-        { status: 500 }
+        { status: 400 }
       );
     }
 
-    // WhoisXML Domain Availability API
-    const apiUrl = new URL(
-      "https://domain-availability.whoisxmlapi.com/api/v1"
+    // Get RDAP server from IANA Bootstrap Registry
+    const bootstrapResponse = await fetch(
+      "https://data.iana.org/rdap/dns.json",
+      {
+        cache: "no-store",
+      }
     );
 
-    apiUrl.searchParams.set("apiKey", apiKey);
-    apiUrl.searchParams.set("domainName", cleanDomain);
-    apiUrl.searchParams.set("credits", "DA");
-    apiUrl.searchParams.set("outputFormat", "JSON");
-
-    const response = await fetch(apiUrl.toString(), {
-      method: "GET",
-      cache: "no-store",
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-
+    if (!bootstrapResponse.ok) {
       console.error(
-        "WhoisXML API error:",
-        response.status,
-        errorText
+        "IANA RDAP Bootstrap error:",
+        bootstrapResponse.status
       );
 
       return NextResponse.json(
@@ -89,36 +81,111 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const data = await response.json();
+    const bootstrap =
+      (await bootstrapResponse.json()) as RdapBootstrap;
 
-    console.log("WhoisXML response:", data);
+    // Find RDAP server for this TLD
+    const service = bootstrap.services.find(
+      ([tlds]) =>
+        tlds.some(
+          (item) =>
+            item.toLowerCase() === tld.toLowerCase()
+        )
+    );
 
-    const availability =
-      data?.DomainInfo?.domainAvailability;
-
-    if (!availability) {
+    if (!service) {
       return NextResponse.json(
         {
           success: false,
           message:
-            "Could not determine domain availability.",
+            "Domain availability checking is not supported for this extension.",
+        },
+        { status: 400 }
+      );
+    }
+
+    const rdapServers = service[1];
+
+    if (!rdapServers || rdapServers.length === 0) {
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            "Unable to find an RDAP server for this domain.",
         },
         { status: 502 }
       );
     }
 
-    const available =
-      availability.toUpperCase() === "AVAILABLE";
+    // Check domain on RDAP server
+    const rdapBaseUrl = rdapServers[0].replace(/\/+$/, "");
 
-    return NextResponse.json({
-      success: true,
-      domain: cleanDomain,
-      available,
-      status: availability,
-      message: available
-        ? `${cleanDomain} is available!`
-        : `${cleanDomain} is not available.`,
+    const rdapUrl = `${rdapBaseUrl}/domain/${encodeURIComponent(
+      cleanDomain
+    )}`;
+
+    console.log("Checking RDAP:", rdapUrl);
+
+    const rdapResponse = await fetch(rdapUrl, {
+      method: "GET",
+      cache: "no-store",
+      headers: {
+        Accept:
+          "application/rdap+json, application/json",
+      },
     });
+
+    // Domain does not exist
+    // Consider it available
+    if (rdapResponse.status === 404) {
+      return NextResponse.json({
+        success: true,
+        domain: cleanDomain,
+        available: true,
+        message: "Domain Available",
+      });
+    }
+
+    // Domain exists
+    // Consider it registered
+    if (rdapResponse.status === 200) {
+      return NextResponse.json({
+        success: true,
+        domain: cleanDomain,
+        available: false,
+        message: "Already Registered",
+      });
+    }
+
+    // Rate limit
+    if (rdapResponse.status === 429) {
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            "Too many requests. Please try again after some time.",
+        },
+        { status: 429 }
+      );
+    }
+
+    // Other RDAP errors
+    const errorText = await rdapResponse.text();
+
+    console.error(
+      "RDAP error:",
+      rdapResponse.status,
+      errorText
+    );
+
+    return NextResponse.json(
+      {
+        success: false,
+        message:
+          "Unable to check domain availability right now.",
+      },
+      { status: 502 }
+    );
   } catch (error) {
     console.error(
       "Domain availability error:",
