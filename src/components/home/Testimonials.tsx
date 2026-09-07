@@ -1,12 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import {
-  FiArrowLeft,
-  FiArrowRight,
-  FiMessageCircle,
-  FiStar,
-} from "react-icons/fi";
+import { useEffect, useRef, useState } from "react";
+import { FiMessageCircle, FiStar } from "react-icons/fi";
 
 const testimonials = [
   {
@@ -61,32 +56,111 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const viewportRef = useRef<HTMLDivElement>(null);
+
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [slideWidth, setSlideWidth] = useState(0);
+  const [visibleCards, setVisibleCards] = useState(3);
+  const [transition, setTransition] = useState(true);
 
-  const nextSlide = () => {
-    setCurrent((prev) =>
-      prev >= testimonials.length - 3 ? 0 : prev + 1
-    );
-  };
+  /*
+   * Clone first 3 cards for infinite looping.
+   */
+  const loopTestimonials = [
+    ...testimonials,
+    ...testimonials.slice(0, 3),
+  ];
 
-  const previousSlide = () => {
-    setCurrent((prev) =>
-      prev <= 0 ? testimonials.length - 3 : prev - 1
-    );
-  };
+  /*
+   * Detect how many cards should be visible.
+   */
+  useEffect(() => {
+    const updateLayout = () => {
+      const width = window.innerWidth;
 
+      if (width < 768) {
+        setVisibleCards(1);
+      } else if (width < 1024) {
+        setVisibleCards(2);
+      } else {
+        setVisibleCards(3);
+      }
+    };
+
+    updateLayout();
+
+    window.addEventListener("resize", updateLayout);
+
+    return () => {
+      window.removeEventListener("resize", updateLayout);
+    };
+  }, []);
+
+  /*
+   * Calculate exact card width from viewport width.
+   */
+  useEffect(() => {
+    const updateSlideWidth = () => {
+      if (!viewportRef.current) return;
+
+      const width = viewportRef.current.clientWidth;
+
+      setSlideWidth(width / visibleCards);
+    };
+
+    updateSlideWidth();
+
+    const observer = new ResizeObserver(updateSlideWidth);
+
+    if (viewportRef.current) {
+      observer.observe(viewportRef.current);
+    }
+
+    window.addEventListener("resize", updateSlideWidth);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateSlideWidth);
+    };
+  }, [visibleCards]);
+
+  /*
+   * Auto scroll.
+   */
   useEffect(() => {
     if (paused) return;
 
     const interval = setInterval(() => {
-      setCurrent((prev) =>
-        prev >= testimonials.length - 3 ? 0 : prev + 1
-      );
+      setCurrent((prev) => prev + 1);
     }, 4500);
 
     return () => clearInterval(interval);
   }, [paused]);
+
+  /*
+   * Infinite loop reset.
+   *
+   * Once we reach the first cloned card,
+   * wait for the transition to finish,
+   * then silently jump back to the original first card.
+   */
+  useEffect(() => {
+    if (current !== testimonials.length) return;
+
+    const timeout = setTimeout(() => {
+      setTransition(false);
+      setCurrent(0);
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setTransition(true);
+        });
+      });
+    }, 700);
+
+    return () => clearTimeout(timeout);
+  }, [current]);
 
   return (
     <section className="overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
@@ -115,6 +189,16 @@ export default function Testimonials() {
             communication and long-term relationships.
           </p>
 
+          <a
+            href="https://g.page/r/CXxZie7flJMNECk/review"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#006cb5] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-[#0082d8] hover:shadow-lg"
+          >
+            <FiStar className="fill-current" />
+            Leave a Google Review
+          </a>
+
         </div>
 
         {/* =====================================================
@@ -128,22 +212,35 @@ export default function Testimonials() {
         >
 
           {/* Viewport */}
-          <div className="overflow-hidden">
+
+          <div
+            ref={viewportRef}
+            className="overflow-hidden"
+          >
 
             {/* Track */}
 
             <div
-              className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+              className={`flex ${
+                transition
+                  ? "transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  : ""
+              }`}
               style={{
-                transform: `translateX(-${current * 33.333333}%)`,
+                transform: `translate3d(-${
+                  current * slideWidth
+                }px, 0, 0)`,
               }}
             >
 
-              {testimonials.map((testimonial, index) => (
+              {loopTestimonials.map((testimonial, index) => (
 
                 <div
                   key={`${testimonial.name}-${index}`}
-                  className="w-full shrink-0 px-2 sm:w-1/2 lg:w-1/3"
+                  className="shrink-0 px-2"
+                  style={{
+                    width: `${100 / visibleCards}%`,
+                  }}
                 >
 
                   {/* =================================================
@@ -151,44 +248,59 @@ export default function Testimonials() {
                   ================================================== */}
 
                   <article
-                    className={`relative h-full min-h-[310px] rounded-2xl border p-6 transition-all duration-700 sm:p-7 ${
-                      index === current + 1
-                        ? "border-[#b9ddf5] bg-white shadow-xl lg:-translate-y-1"
-                        : "border-slate-200 bg-[#f6fafd] shadow-sm"
-                    }`}
+                    className="
+                      relative
+                      h-full
+                      min-h-[310px]
+                      rounded-2xl
+                      border
+                      border-slate-200
+                      bg-[#f6fafd]
+                      p-6
+                      shadow-sm
+                      transition-all
+                      duration-500
+                      hover:border-[#b9ddf5]
+                      hover:bg-white
+                      hover:shadow-xl
+                      sm:p-7
+                    "
                   >
 
                     {/* Quote */}
+
                     <div className="absolute right-5 top-3 text-6xl font-black leading-none text-[#006cb5]/10">
                       "
                     </div>
 
                     {/* Stars */}
-                    <div className="relative flex gap-1 text-[#006cb5]">
 
+                    <div className="relative flex gap-1 text-[#006cb5]">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <FiStar
                           key={star}
                           className="fill-current text-sm"
                         />
                       ))}
-
                     </div>
 
                     {/* Message */}
+
                     <p className="relative mt-6 text-sm leading-7 text-slate-600">
                       “{testimonial.message}”
                     </p>
 
                     {/* Client */}
+
                     <div className="absolute bottom-6 left-6 right-6 border-t border-slate-200 pt-5 sm:left-7 sm:right-7">
 
                       <div className="flex items-center gap-3">
 
                         {/* Avatar */}
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#006cb5] text-sm font-bold text-white">
+
+                        {/* <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#006cb5] text-sm font-bold text-white">
                           {testimonial.name.charAt(0)}
-                        </div>
+                        </div> */}
 
                         <div className="min-w-0">
 
@@ -211,62 +323,6 @@ export default function Testimonials() {
                 </div>
 
               ))}
-
-            </div>
-
-          </div>
-
-          {/* =====================================================
-              CONTROLS
-          ====================================================== */}
-
-          <div className="mt-7 flex items-center justify-between">
-
-            {/* Dots */}
-
-            <div className="flex items-center gap-2">
-
-              {Array.from({
-                length: testimonials.length - 2,
-              }).map((_, index) => (
-
-                <button
-                  key={index}
-                  type="button"
-                  onClick={() => setCurrent(index)}
-                  aria-label={`Go to testimonial group ${index + 1}`}
-                  className={`h-2.5 rounded-full transition-all duration-300 ${
-                    current === index
-                      ? "w-8 bg-[#006cb5]"
-                      : "w-2.5 bg-slate-300 hover:bg-[#38a9f5]"
-                  }`}
-                />
-
-              ))}
-
-            </div>
-
-            {/* Arrows */}
-
-            <div className="flex items-center gap-2">
-
-              <button
-                type="button"
-                onClick={previousSlide}
-                aria-label="Previous testimonials"
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-[#071827] shadow-sm transition hover:border-[#006cb5] hover:bg-[#eaf6ff] hover:text-[#006cb5]"
-              >
-                <FiArrowLeft />
-              </button>
-
-              <button
-                type="button"
-                onClick={nextSlide}
-                aria-label="Next testimonials"
-                className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#006cb5] text-white shadow-sm transition hover:bg-[#0082d8]"
-              >
-                <FiArrowRight />
-              </button>
 
             </div>
 
