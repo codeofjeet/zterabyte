@@ -66,13 +66,13 @@ const features = [
       "Create professional email addresses using your own domain.",
   },
   {
-    icon: FiMail,
+    icon: FiCloud,
     title: "Get Additional Storage at ₹40.00/5GB",
     description:
       "Buy Additional Storage for more space."
   },
   {
-    icon: FiGlobe,
+    icon: FiMail,
     title: "Custom Email",
     description:
       "Email IDs like yourname@yourdomain.com for a professional business identity.",
