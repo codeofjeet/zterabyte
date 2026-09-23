@@ -21,7 +21,7 @@ const plans = [
     description:
       "Perfect for personal websites and small projects.",
     price: "₹1000",
-    salePrice: "₹799",
+    salePrice: "₹800",
     saleActive: true,
     period: "/Year",
     popular: false,
@@ -70,7 +70,7 @@ const plans = [
     description:
       "A powerful choice for growing business websites.",
     price: "₹1200",
-    salePrice: "₹999",
+    salePrice: "₹1000",
     saleActive: true,
     period: "/Year",
     popular: true,
@@ -126,7 +126,7 @@ const plans = [
     description:
       "More resources for established websites and businesses.",
     price: "₹2000",
-    salePrice: "₹1,599",
+    salePrice: "₹1800",
     saleActive: true,
     period: "/Year",
     popular: false,
