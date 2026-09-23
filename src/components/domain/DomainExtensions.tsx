@@ -54,9 +54,9 @@ const extensions = [
 const pricing = [
   {
     extension: ".com",
-    register: "₹1,299",
-    renew: "₹1,299",
-    transfer: "₹1,299",
+    register: "₹1,499",
+    renew: "₹1,499",
+    transfer: "₹1,499",
   },
   {
     extension: ".in",
