@@ -165,6 +165,10 @@ const companyLinks = [
     title: "Terms & Conditions",
     href: "/terms",
   },
+  {
+    title: " Refund & Cancellation",
+    href: "/refund-cancellation",
+  },
 ];
 
 export default function Footer() {
