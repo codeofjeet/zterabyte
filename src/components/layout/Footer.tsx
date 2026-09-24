@@ -542,10 +542,17 @@ export default function Footer() {
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-5 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between lg:px-6">
 
           <p>
-            © {new Date().getFullYear()} Zterabyte. All rights reserved.
+            © {new Date().getFullYear()} ZTERABYTE. All Rights Reserved.
           </p>
 
           <div className="flex flex-wrap gap-5">
+
+            <Link
+              href="/refund-cancellation"
+              className="transition hover:text-white"
+            >
+              Refund & Cancellation
+            </Link>
 
             <Link
               href="/privacy-policy"

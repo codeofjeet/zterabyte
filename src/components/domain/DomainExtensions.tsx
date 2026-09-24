@@ -438,16 +438,18 @@ export default function DomainExtensions() {
 
                   </tbody>
 
-                </table>
+                </table>                
 
               </div>
-
+              
 
               {/* =====================================================
                   MOBILE/TABLET INFORMATION
               ====================================================== */}
 
-              <div className="border-t border-slate-100 bg-[#f8fbfd] px-5 py-3 text-center text-xs text-slate-500 lg:hidden">
+              <div className="border-t border-slate-100 bg-[#f8fbfd] px-5 py-3 text-left text-xs text-slate-500">
+              <span className="font-bold"> Note:</span><br/>
+                All prices are inclusive of 18% GST.<br/>
                 Registration, renewal and transfer prices are shown for each domain extension.
               </div>
 
