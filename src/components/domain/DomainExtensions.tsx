@@ -72,9 +72,9 @@ const pricing = [
   },
   {
     extension: ".org",
-    register: "₹899",
-    renew: "₹899",
-    transfer: "₹899",
+    register: "₹1599",
+    renew: "₹1599",
+    transfer: "₹1599",
   },
   {
     extension: ".co.in",
