@@ -55,7 +55,9 @@ const plans = [
           "Includes 1 MySQL database for your website or web application.",
       },
       {
-        name: "Control Panel",
+        name: "Plesk Panel",
+        tooltip:
+          "Manage your hosting account and websites with our intuitive plesk panel.",
       },
       {
         name: "24/7 Support",
@@ -76,24 +78,24 @@ const plans = [
     popular: true,
     features: [
       {
-        name: "5 Websites",
+        name: "1 Websites",
         tooltip:
           "Host up to 5 websites under the same hosting account.",
       },
       {
-        name: "25 GB NVMe Storage",
+        name: "2 GB NVMe Storage",
         tooltip:
-          "Get 25 GB of fast NVMe storage for website files, images, databases and other hosting data.",
+          "Get 2 GB of fast NVMe storage for website files, images, databases and other hosting data.",
       },
       {
-        name: "Unmetered Bandwidth",
+        name: "100 GB Bandwidth",
         tooltip:
-          "Bandwidth is not limited to a fixed monthly amount under normal usage conditions and remains subject to fair-use and service policies.",
+          "Your website can transfer up to 100 GB of data during the billing period.",
       },
       {
-        name: "25 Email Accounts",
+        name: "10 Email Accounts",
         tooltip:
-          "Create up to 25 professional email accounts using your domain names.",
+          "Create up to 10 professional email accounts using your domain names.",
       },
       {
         name: "Free SSL Certificate",
@@ -101,17 +103,14 @@ const plans = [
           "Helps secure your website with HTTPS encryption and protects data exchanged between your website and visitors.",
       },
       {
-        name: "10 MySQL Databases",
+        name: "2 MySQL Databases",
         tooltip:
-          "Create up to 10 MySQL databases for your websites and applications.",
+          "Create up to 2 MySQL databases for your websites and applications.",
       },
       {
-        name: "Control Panel",
-      },
-      {
-        name: "Website Backup",
+        name: "Plesk Panel",
         tooltip:
-          "Helps keep a backup copy of your website data for recovery when required.",
+          "Manage your hosting account and websites with our intuitive plesk panel.",
       },
       {
         name: "24/7 Support",
@@ -132,24 +131,24 @@ const plans = [
     popular: false,
     features: [
       {
-        name: "10 Websites",
+        name: "1 Websites",
         tooltip:
-          "Host up to 10 websites under the same hosting account.",
+          "Host up to 1 websites under the same hosting account.",
       },
       {
-        name: "50 GB NVMe Storage",
+        name: "5 GB NVMe Storage",
         tooltip:
-          "Get 50 GB of fast NVMe storage for website files, images, databases and other hosting data.",
+          "Get 5 GB of fast NVMe storage for website files, images, databases and other hosting data.",
       },
       {
-        name: "Unmetered Bandwidth",
+        name: "100 GB Bandwidth",
         tooltip:
-          "Bandwidth is not limited to a fixed monthly amount under normal usage conditions and remains subject to fair-use and service policies.",
+          "Your website can transfer up to 100 GB of data during the billing period.",
       },
       {
-        name: "50 Email Accounts",
+        name: "20 Email Accounts",
         tooltip:
-          "Create up to 50 professional email accounts using your domain names.",
+          "Create up to 20 professional email accounts using your domain names.",
       },
       {
         name: "Free SSL Certificate",
@@ -157,22 +156,14 @@ const plans = [
           "Helps secure your website with HTTPS encryption and protects data exchanged between your website and visitors.",
       },
       {
-        name: "Unlimited Databases",
+        name: "10 Databases",
         tooltip:
           "Create multiple databases for your websites and applications according to available hosting resources and service policies.",
       },
       {
-        name: "Control Panel",
-      },
-      {
-        name: "Website Backup",
+        name: "Plesk Panel",
         tooltip:
-          "Helps keep a backup copy of your website data for recovery when required.",
-      },
-      {
-        name: "Malware Protection",
-        tooltip:
-          "Helps detect and protect your hosting environment from malicious files and common security threats.",
+          "Manage your hosting account and websites with our intuitive plesk panel.",
       },
       {
         name: "24/7 Support",
