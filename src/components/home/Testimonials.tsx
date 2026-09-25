@@ -5,53 +5,35 @@ import { FiMessageCircle, FiStar } from "react-icons/fi";
 
 const testimonials = [
   {
-    name: "Rahul Sharma",
-    role: "Business Owner",
-    company: "Sharma Enterprises",
+    name: "Vivek Singh",
+    // role: "Business Owner",
+    company: "Dreams Computers, Delhi",
     message:
-      "Zterabyte provided a smooth and professional experience. Their team understood our requirements and helped us with the right digital solution.",
+      "I highly recommend Mr. Sumit Nagar for his outstanding web development and IT services. He completely transformed our online presence with a beautifully designed, responsive website. Additionally, the web hosting and professional email services he provided have been seamless and incredibly reliable. Exceptional support and highly professional!",
   },
   {
-    name: "Priya Verma",
-    role: "Founder",
-    company: "PV Fashion Studio",
+    name: "Rahul Birla",
+    company: "Birla Eye Hospital",
     message:
-      "We were looking for a reliable technology partner and found the support and service very helpful throughout our project.",
+      "Fast and reliable IT services. Our website was developed in few days and after support is also very good. You can trust them.",
   },
   {
-    name: "Amit Gupta",
-    role: "Business Manager",
-    company: "AG Solutions",
+    name: "Anushika Mishra",
+    company: "The Nalanda",
     message:
-      "From website development to digital services, the overall experience was professional and focused on our business requirements.",
+      "He is one of the best web designer in the town, providing the quality work at very affordable rates.",
   },
   {
-    name: "Neha Singh",
-    role: "Director",
-    company: "NS Healthcare",
+    name: "Ashish Sitaram Panicker",
+    company: "Vocean Technologies",
     message:
-      "The Zterabyte team understood our business goals and converted our ideas into a clean and professional digital presence.",
+      "I’m very happy with the service, the timely support, and the guidance provided regarding the server. This was my first time working with Sumit Ji, and he was very helpful with the server configuration. He guided me in choosing the most suitable server for my requirements and advised me not to spend unnecessary money at this stage. I truly appreciate his honest advice, excellent support, and professional service. It was a great first experience working with him, and based on his service and support, I would definitely be happy to work with him again in the future.",
   },
   {
-    name: "Vikas Jain",
-    role: "Founder",
-    company: "Jain Trading Co.",
+    name: "Ravi Suman",
+   // company: "Jain Trading Co.",
     message:
-      "We needed a dependable technology partner for our website and online services. Zterabyte provided practical guidance throughout the project.",
-  },
-  {
-    name: "Anjali Mehta",
-    role: "Marketing Manager",
-    company: "AM Lifestyle",
-    message:
-      "Working with Zterabyte was a great experience. Their team was creative, knowledgeable and always willing to understand our ideas.",
-  },
-  {
-    name: "Suresh Kumar",
-    role: "Director",
-    company: "SK Industries",
-    message:
-      "Zterabyte has been a helpful technology partner for our business. Their professional approach and technical knowledge made the project experience positive.",
+      "Best web hosting service  in kota. Best service with support available 24/7.",
   },
 ];
 
@@ -250,8 +232,10 @@ export default function Testimonials() {
                   <article
                     className="
                       relative
+                      flex
                       h-full
                       min-h-[310px]
+                      flex-col
                       rounded-2xl
                       border
                       border-slate-200
@@ -292,7 +276,7 @@ export default function Testimonials() {
 
                     {/* Client */}
 
-                    <div className="absolute bottom-6 left-6 right-6 border-t border-slate-200 pt-5 sm:left-7 sm:right-7">
+                    <div className="mt-auto border-t border-slate-200 pt-5">
 
                       <div className="flex items-center gap-3">
 
@@ -309,7 +293,7 @@ export default function Testimonials() {
                           </p>
 
                           <p className="mt-1 truncate text-xs text-slate-500">
-                            {testimonial.role} · {testimonial.company}
+                            {/* {testimonial.role} ·*/} {testimonial.company} 
                           </p>
 
                         </div>
