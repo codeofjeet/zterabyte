@@ -71,7 +71,7 @@ export default function DesktopMenu() {
                 <FiChevronDown
                   className="
                     shrink-0
-                    text-[11px]
+                    text-[16px]
                     transition-transform
                     duration-200
                     group-hover:rotate-180

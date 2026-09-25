@@ -71,13 +71,13 @@ export default function Header() {
         {/* Desktop Actions */}
         <div className="hidden shrink-0 items-center gap-2 lg:flex">
 
-          <Link
+          {/* <Link
             href="/login"
             className="flex items-center gap-1.5 whitespace-nowrap rounded-lg border border-[#006cb5] px-3 py-2 text-[13px] font-semibold text-[#006cb5] transition hover:bg-[#eaf6ff]"
           >
             <FiUser />
             Client Login
-          </Link>
+          </Link> */}
 
           <Link
             href="/contact"

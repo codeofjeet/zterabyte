@@ -2,9 +2,9 @@ import ClientCard from "@/components/clients/ClientCard";
 import { clients } from "@/data/clients";
 
 export const metadata = {
-  title: "Our Clients | Zterabyte",
+  title: "Our Clients | ZTERABYTE",
   description:
-    "Explore the businesses and organizations that have trusted Zterabyte for hosting, website development, design, email and digital marketing services.",
+    "Explore the businesses and organizations that have trusted ZTERABYTE for hosting, website development, design, email and digital marketing services.",
 };
 
 export default function OurClientPage() {
@@ -29,7 +29,7 @@ export default function OurClientPage() {
             {/* Heading */}
             <h1 className="mt-6 text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
               Businesses That{" "}
-              <span className="text-[#70c8fa]">Trust Zterabyte</span>
+              <span className="text-[#70c8fa]">Trust ZTERABYTE</span>
             </h1>
 
             {/* Description */}
@@ -59,7 +59,7 @@ export default function OurClientPage() {
 
             <p className="mt-4 text-sm leading-6 text-slate-600 sm:text-base">
               From websites and hosting to email, design and digital marketing,
-              our clients rely on Zterabyte for practical digital solutions.
+              our clients rely on ZTERABYTE for practical digital solutions.
             </p>
           </div>
 
@@ -104,7 +104,7 @@ export default function OurClientPage() {
                 transition hover:bg-[#0086dc]
               "
             >
-              Contact Zterabyte
+              Contact Now
             </a>
           </div>
         </div>
