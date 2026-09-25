@@ -153,16 +153,16 @@ export const clients: Client[] = [
   },
   {
     id: 19,
-    name: "India Glam",
-    logo: "/images/clients/india-glam.JPG",
+    name: "Vocean Technologies",
+    logo: "/images/clients/vocean-technologies.JPG",
     // service: "Website Development & Hosting",
     // description:
     //   "Bright Future Academy chose Zterabyte for website development and hosting services to establish a professional and reliable digital presence.",
   },
   {
     id: 20,
-    name: "Semesta Energi Kimia",
-    logo: "/images/clients/semesta-engergi-kimia.JPG",
+    name: "India Glam",
+    logo: "/images/clients/india-glam.JPG",
     // service: "Website Development & Hosting",
     // description:
     //   "Bright Future Academy chose Zterabyte for website development and hosting services to establish a professional and reliable digital presence.",

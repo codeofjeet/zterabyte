@@ -46,8 +46,7 @@ export default function Header() {
       {/* =========================
           MAIN HEADER
       ========================== */}
-      <div className="mx-auto flex w-full max-w-360 items-center gap-4 px-5 py-1 lg:px-6">
-
+      <div className="mx-auto flex w-full max-w-360 items-center gap-4 overflow-x-clip px-5 py-1 lg:px-6"> 
         {/* Logo */}
         <Link href="/" className="shrink-0">
           <div className="relative h-[38px] w-[140px] xl:h-[62px] xl:w-[170px]">

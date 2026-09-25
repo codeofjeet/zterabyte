@@ -31,7 +31,7 @@ const testimonials = [
   },
   {
     name: "Ravi Suman",
-   // company: "Jain Trading Co.",
+    // company: "Vocean Technologies",
     message:
       "Best web hosting service  in kota. Best service with support available 24/7.",
   },
@@ -188,7 +188,7 @@ export default function Testimonials() {
         ====================================================== */}
 
         <div
-          className="relative mt-12"
+          className="relative mt-12 overflow-x-hidden"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
