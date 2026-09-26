@@ -15,14 +15,13 @@ export default function Header() {
       <div className="hidden bg-[#071827] text-white lg:block">
         <div className="mx-auto flex w-full max-w-600 items-center gap-20 px-5 py-3 lg:px-6 text-sm">
 
-          <div className="flex items-center gap-20">
-
+          <div className="flex items-center gap-10">
             <a
               href="tel:+919119220608"
               className="flex items-center gap-2 whitespace-nowrap transition hover:text-[#6fc2f5]"
             >
               <FiPhone />
-              +91 91192 20608
+              +91-911-922-0608
             </a>
 
             <a
