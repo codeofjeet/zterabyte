@@ -55,6 +55,7 @@ import Script from "next/script";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppChat from "@/components/common/WhatsAppChat";
+import TawkChat from "@/components/TawkChat/TawkChat";
 
 import "./globals.css";
 
@@ -150,6 +151,7 @@ export default function RootLayout({
 
         {/* WhatsApp */}
         <WhatsAppChat />
+        <TawkChat />
       </body>
     </html>
   );

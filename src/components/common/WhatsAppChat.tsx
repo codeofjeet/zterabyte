@@ -10,7 +10,7 @@ export default function WhatsAppChat() {
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
   return (
-    <div className="group fixed bottom-5 right-5 z-50 sm:bottom-6 sm:right-6">
+    <div className="group fixed bottom-5 left-5 z-50 sm:bottom-6 sm:right-6">
       {/* Chat Tooltip */}
       <div
         className="
