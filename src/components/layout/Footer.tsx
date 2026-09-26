@@ -244,10 +244,9 @@ export default function Footer() {
               </div>
             </Link>
 
-            <p className="mt-6 max-w-sm text-sm leading-7 text-slate-400">
-              Complete digital solutions for businesses — from domains,
-              hosting and professional email to website development,
-              creative design and digital marketing.
+            <p className="mt-1 max-w-sm text-sm leading-7 text-slate-400">
+              MSME Registered Enterprise<br/>
+              Udyam Registration No.: (UDYAM-RJ-24-0098420)
             </p>
 
             {/* Social Media */}
